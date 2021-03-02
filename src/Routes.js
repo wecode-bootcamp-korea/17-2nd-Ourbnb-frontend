@@ -5,7 +5,7 @@ import Nav from './componenets/Nav/Nav';
 import Login from './Pages/Login/Login';
 import Detailpage from './Pages/Detailpage/Detailpage';
 
-const App = () => {
+const Routes = () => {
   return (
     <Router>
       <Nav />
@@ -18,4 +18,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Routes;
