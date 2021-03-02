@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&family=Roboto&display=swap');
+
     ${reset}
     html,
 body,
@@ -90,7 +92,8 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 article,
 aside,
