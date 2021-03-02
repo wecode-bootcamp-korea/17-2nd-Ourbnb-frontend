@@ -9,7 +9,7 @@ const DetailList = props => {
   const [roomdata, setroomData] = useState([]);
   const [mapdata, setmapData] = useState([]);
   const { state } = props.location;
-
+  //console.log('이거슨 디테일리스트>>', props.location.state);
   //백엔드 통신용 로직
   // useEffect(() => {
   //   const fetchdata = async () => {
@@ -41,6 +41,7 @@ const DetailList = props => {
     fetchdata();
   }, []);
 
+  //console.log('디테일리스트>>>>', props);
   return (
     <Listcontainer>
       <List roomdata={roomdata} checkdata={state} />

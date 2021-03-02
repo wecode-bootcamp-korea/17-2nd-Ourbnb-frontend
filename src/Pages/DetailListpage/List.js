@@ -17,7 +17,6 @@ const List = props => {
         {startdayarr[1]}월 {startdayarr[2]}일 - {enddayarr[1]}월 {enddayarr[2]}
         일, 게스트 {person} 명
       </CheckInfo>
-
       <Title>지도에서 선택한 지역의 숙소</Title>
       <Tag>
         <span onClick={() => settypeOpen(!istypeopen)}>숙소유형</span>
