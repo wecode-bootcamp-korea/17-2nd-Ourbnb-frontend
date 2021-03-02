@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import "./index.css";
-
-//import reportWebVitals from './reportWebVitals';
+import GlobalStyles from 'styles/GlobalStyles';
 import Routes from './Routes';
 
-ReactDOM.render(<Routes />, document.getElementById('root'));
+ReactDOM.render(
+  <React.StrictMode>
+    <GlobalStyles />
+    <Routes />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
