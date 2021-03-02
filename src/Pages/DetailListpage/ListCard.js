@@ -1,12 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link, withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import Imgscrollbox from './Imgscrollbox';
 import { IoIosStar } from 'react-icons/io';
 import { FiHeart } from 'react-icons/fi';
+import { id } from 'date-fns/locale';
 
-const ListCard = ({ data }) => {
+const ListCard = ({ data }, props) => {
+  const history = useHistory();
+  const goToDetail = () => {
+    console.log(`/detail/${data.id}`);
+    history.push(`/detail/${data.id}`);
+  };
   return (
-    <CardBox>
+    <CardBox onClick={goToDetail}>
+      <Link
+        to={{
+          pathname: `/detail:${id}`,
+          state: {
+            startDate: props,
+            endDate: props,
+            person: props,
+          },
+        }}
+      ></Link>
       <h5>
         <Imgscrollbox data={data.img} />
       </h5>
@@ -30,7 +48,7 @@ const ListCard = ({ data }) => {
   );
 };
 
-export default ListCard;
+export default withRouter(ListCard);
 
 const CardBox = styled.div`
   display: flex;

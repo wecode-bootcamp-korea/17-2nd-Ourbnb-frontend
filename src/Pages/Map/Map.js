@@ -39,7 +39,7 @@ class MapAPI extends Component {
       width: '900px',
       height: '100%',
     };
-    console.log(APIKEY);
+    //console.log(APIKEY);
     return (
       <Map
         google={this.props.google}
