@@ -1,0 +1,130 @@
+.login {
+  width: 570px;
+  background-color: rgb(255, 255, 255);
+  margin: 0px auto;
+  border-radius: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+
+  .loginHeader {
+    height: 65px;
+    padding-top: 25px;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: 1px solid rgb(207, 203, 203);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+  }
+  .loginContianer {
+    margin-left: 35px;
+    width: 500px;
+    .loginInput {
+      height: 155px;
+      display: flex;
+      flex-direction: column;
+      padding-top: 40px;
+
+      input:focus {
+        outline: none;
+        background-color: #e8f0fe;
+      }
+
+      .loginInputId,
+      .loginInputPw {
+        height: 60px;
+        border: 1px solid black;
+        border-color: gray;
+        padding-left: 10px;
+      }
+      .loginInputId {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom: none;
+      }
+      .loginInputPw {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+    }
+    .loginText {
+      font-size: 11.5px;
+      margin-top: 15px;
+      color: gray;
+    }
+    .loginButton {
+      height: 60px;
+      margin-top: 30px;
+      border-radius: 10px;
+      background-color: #dd4160;
+      font-size: 20px;
+      font-weight: bolder;
+      color: rgba(255, 255, 255, 0.904);
+      cursor: pointer;
+    }
+  }
+
+  .line {
+    border-bottom: 1px solid gray;
+    width: 500px;
+    height: 15px;
+    padding-bottom: 50px;
+    position: relative;
+    text-align: center;
+    margin-left: 35px;
+  }
+  .socialLogin {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0px 9px 30px;
+    height: 200px;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    .kakaoContainer {
+      width: 500px;
+
+      .kakao {
+        width: 100%;
+        height: 60px;
+        background-color: rgb(252, 252, 73);
+        font-size: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-weight: bolder;
+      }
+    }
+    .googleContainer {
+      width: 500px;
+      .google {
+        width: 100%;
+        height: 60px;
+        margin-bottom: 30px;
+        font-size: 18px;
+        text-align: center;
+        font-weight: bolder;
+      }
+    }
+  }
+  .joinContainer {
+    margin-left: 35px;
+    display: flex;
+    box-sizing: content-box;
+
+    .joinText {
+      margin-right: 10px;
+    }
+    .join {
+      color: rgb(41, 41, 41);
+      font-size: 18px;
+      font-weight: bolder;
+      // border-bottom: 1px solid rgb(0, 0, 0);
+      padding-bottom: 0px;
+      background-color: white;
+      cursor: pointer;
+    }
+  }
+}
