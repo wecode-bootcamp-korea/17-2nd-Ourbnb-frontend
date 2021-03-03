@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { SiAirbnb } from 'react-icons/si';
-import { VscGlobe } from 'react-icons/vsc';
 import { BsList } from 'react-icons/bs';
 import { FaRegUserCircle } from 'react-icons/fa';
+import { RiLoginBoxLine } from 'react-icons/ri';
+
+import Join from '../../Pages/Join/Join';
 
 const Nav = () => {
+  const [isJoin, setIsJoin] = useState(false);
+  const menuClick = () => {
+    setIsJoin(!isJoin);
+  };
+
   return (
     <Box>
       <Link to="/">
@@ -18,13 +25,14 @@ const Nav = () => {
       <Navicon>
         <h1>호스트 되기</h1>
         <div>
-          <VscGlobe size={27} />
+          <RiLoginBoxLine size={27} onClick={menuClick} />
         </div>
         <span>
           <BsList size={26} />
           <div>
             <FaRegUserCircle size={28} />
           </div>
+          {isJoin && <Join />}
         </span>
       </Navicon>
     </Box>
@@ -73,6 +81,7 @@ const Navicon = styled.div`
   justify-content: space-between;
   padding: 5px;
   width: 250px;
+
   h1 {
     margin-top: 15px;
     font-weight: 400;
@@ -90,7 +99,7 @@ const Navicon = styled.div`
     color: rgb(94, 94, 94);
     div {
       display: inline;
-      margin-left: 8px;
+      // margin-left: 8px;
       margin-top: 7px;
     }
   }
