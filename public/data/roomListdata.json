@@ -6,6 +6,9 @@
 "title" : "청담동 one room",
 "MaxNum" : "4명",
 "grade": "4.3",
+"bed": 3,
+"bedroom":5,
+"bathroom":9,
 "price": 120,"lat": 37.50617761380439, "long": 127.0515731438428
  },
  {
@@ -14,6 +17,9 @@
 "location": "선릉 로프트 전체",
 "title" : "종로의 원룸",
 "MaxNum" : "4명",
+"bed": 3,
+"bedroom":5,
+"bathroom":9,
 "grade": "4.3",
 "price": 100,
 "lat": 37.50803725583263,
@@ -27,7 +33,10 @@
 "MaxNum" : "4명",
 "grade": "4.3",
 "price": 160,
-"lat": 47.2052192687988, "long": -121.988426208496
+"bed": 3,
+"bedroom":5,
+"bathroom":9,
+"lat": 47.2052192687988, "long": 121.988426208496
  },
  {
     "id":4,
@@ -36,6 +45,9 @@
     "title" : "청담동 one room",
     "MaxNum" : "4명",
     "grade": "4.3",
+    "bed": 3,
+"bedroom":5,
+"bathroom":9,
     "price": 140,
     "lat": 37.504543473645896,
     "long": 127.05375109741996

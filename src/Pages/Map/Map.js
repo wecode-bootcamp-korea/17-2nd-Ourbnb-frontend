@@ -1,17 +1,32 @@
 import React, { Component } from 'react';
+
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import './Map.scss';
 import { APIKEY } from '../../config';
 
 class MapAPI extends Component {
+  state = {
+    show: false,
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {},
+  };
+
+  onMarkerClick = (props, marker) => {
+    this.setState({
+      showingInfoWindow: true,
+      activeMarker: marker,
+      // selectedPlace: props,
+    });
+  };
+
   showRooms = () => {
-    const img =
-      'https://png.pngtree.com/png-vector/20190216/ourlarge/pngtree-vector-location-icon-png-image_540821.jpg';
+    console.log('고고', this.props.mapdata);
     return this.props.mapdata.map((room, index) => {
       return (
         <Marker
           icon={{
-            url: img,
+            // url: img,
             size: { width: 50, height: 50 },
             anchor: { x: 15, y: 50 },
             scaledSize: { width: 50, height: 50 },
@@ -22,10 +37,28 @@ class MapAPI extends Component {
             lat: room['lat'],
             lng: room['long'],
           }}
-          onClick={this.handleInfo}
+          onClick={this.onMarkerClick}
         >
-          <InfoWindow>
-            <div style={{ color: 'black' }}></div>
+          {/* {this.state.show && (
+            <InfoWindow marker={this.state.show}>
+              <div
+              // style={{
+              //   width: 100,
+              //   height: 100,
+              // }}
+              >
+                Info windowdsfdfgdgfdgf
+              </div>
+            </InfoWindow>
+          )} */}
+          <InfoWindow
+            // marker={this.state.activeMarker}
+            onClose={this.onInfoWindowClose}
+            visible={this.state.showingInfoWindow}
+          >
+            <div>
+              <h4>lskfjlskjfdl;skaj fvlwkf;l</h4>
+            </div>
           </InfoWindow>
         </Marker>
       );
@@ -36,25 +69,28 @@ class MapAPI extends Component {
 
   render() {
     const mapStyles = {
-      width: '900px',
-      height: '100%',
+      width: '833px',
+      height: '100vh',
     };
-    //console.log(APIKEY);
+
     return (
       <Map
         google={this.props.google}
         zoom={14}
         style={mapStyles}
-        initialCenter={{ lat: 37.506496879199226, lng: 127.05404733645442 }}
+        initialCenter={{
+          // lat: this.props.mapdata[0].lat,
+          // lng: this.props.mapdata[0].long,
+          lat: 37.490414,
+          lng: 127.029711,
+        }}
         onClick={this.onEventChecker}
-        draggable="true"
       >
         {this.showRooms()}
       </Map>
     );
   }
 }
-
 export default GoogleApiWrapper({
   apiKey: `${APIKEY}`,
 })(MapAPI);

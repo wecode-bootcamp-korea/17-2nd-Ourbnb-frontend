@@ -28,7 +28,3 @@ const Routes = () => {
 };
 
 export default Routes;
-
-{
-  /* <Route exact path="/" render={props => <DetailList {...props} />} /> */
-}

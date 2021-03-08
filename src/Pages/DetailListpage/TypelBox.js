@@ -1,28 +1,75 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const TypelBox = () => {
-  const searchType = () => {};
+const TypelBox = props => {
+  const {
+    ishotel,
+    isentire,
+    isprivate,
+    isshared,
+    setHotel,
+    setEnt,
+    setSha,
+    setPri,
+    searchType,
+  } = props;
 
   return (
     <div>
       <Cotainer>
         <List>
-          {typeList.map(type => {
-            return (
-              <Typelist>
-                <input
-                  type="checkbox"
-                  name="entireplace"
-                  //   checked={this.state.checked}
-                />
-                <div>
-                  <h1>{type.name}</h1>
-                  <h2>{type.desc}</h2>
-                </div>
-              </Typelist>
-            );
-          })}
+          <Typelist>
+            <input
+              type="checkbox"
+              name="entireplace"
+              checked={isentire}
+              onChange={() => setEnt(!isentire)}
+              value="entire"
+            />
+            <div>
+              <h1>집전체</h1>
+              <h2>집전체를 단독으로 사용합니다</h2>
+            </div>
+          </Typelist>
+          <Typelist>
+            <input
+              type="checkbox"
+              name="entireplace"
+              checked={isprivate}
+              onChange={() => setPri(!isprivate)}
+              value="shared"
+            />
+            <div>
+              <h1>개인실</h1>
+              <h2>집전체를 단독으로 사용합니다</h2>
+            </div>
+          </Typelist>
+          <Typelist>
+            <input
+              type="checkbox"
+              name="entireplace"
+              checked={isshared}
+              onChange={() => setSha(!isshared)}
+              value="shared"
+            />
+            <div>
+              <h1>다인실</h1>
+              <h2>집전체를 단독으로 사용합니다</h2>
+            </div>
+          </Typelist>
+          <Typelist>
+            <input
+              type="checkbox"
+              name="entireplace"
+              checked={ishotel}
+              onChange={() => setHotel(!ishotel)}
+              value="shared"
+            />
+            <div>
+              <h1>호텔</h1>
+              <h2>집전체를 단독으로 사용합니다</h2>
+            </div>
+          </Typelist>
         </List>
         <SaveBtn>
           <button onClick={searchType}>save</button>
@@ -95,27 +142,28 @@ const typeList = [
   {
     name: '집전체',
     desc: '집전체를 단독으로 사용합니다',
-    type: 'entire',
+    value: 'entire',
     id: 1,
   },
+
   {
     name: '개인실',
     desc:
       '침실은 단독으로 쓰고, 이외의 공간은 호스트나 다른 게스트와 함께 이용할 수도 있습니다.',
-    type: 'private',
+    value: 'private',
     id: 2,
   },
   {
     name: '호텔 객실',
     desc: '부티크 호텔, 호스텔 등의 개인실이나 다인실을 이용합니다.',
-    type: 'hotel',
+    value: 'hotel',
     id: 3,
   },
   {
     name: '다인실',
     desc:
       '사적 공간 없이, 침실이나 욕실 등을 호스트나 다른 게스트와 함께 이용합니다.',
-    type: 'shared',
+    value: 'shared',
     id: 4,
   },
 ];

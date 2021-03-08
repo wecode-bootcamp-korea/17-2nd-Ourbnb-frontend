@@ -2,16 +2,39 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ListCard from './ListCard';
 import TypeBox from './TypelBox';
+import PriceBox from './PriceBox';
 
 const List = props => {
-  const [istypeopen, settypeOpen] = useState(false);
-  const startdayarr = props.checkdata.startDate.split('_');
-  const enddayarr = props.checkdata.endDate.split('_');
+  const {
+    ishotel,
+    isentire,
+    isprivate,
+    isshared,
+    setHotel,
+    setEnt,
+    setSha,
+    setPri,
+    searchType,
+    minvalue,
+    setMinvalue,
+    setMaxvalue,
+    maxvalue,
+    searchPrice,
+    onchange,
+    istypeopen,
+    settypeOpen,
+    ispriceopen,
+    setpriceopen,
+  } = props;
+
+  const startdayarr = props.checkdata.startDate.split('-');
+  const enddayarr = props.checkdata.endDate.split('-');
   const { person } = props.checkdata;
 
   return (
     <Listcontainer>
       {istypeopen && <ModalOutside onClick={() => settypeOpen(false)} />}
+      {ispriceopen && <ModalOutside onClick={() => setpriceopen(false)} />}
 
       <CheckInfo>
         {startdayarr[1]}월 {startdayarr[2]}일 - {enddayarr[1]}월 {enddayarr[2]}
@@ -20,14 +43,40 @@ const List = props => {
       <Title>지도에서 선택한 지역의 숙소</Title>
       <Tag>
         <span onClick={() => settypeOpen(!istypeopen)}>숙소유형</span>
-        <span>가격</span>
-        {istypeopen && <TypeBox />}
+        <span onClick={() => setpriceopen(!ispriceopen)}>가격</span>
+        {istypeopen && (
+          <TypeBox
+            ishotel={ishotel}
+            isentire={isentire}
+            isprivate={isprivate}
+            isshared={isshared}
+            setHotel={setHotel}
+            setEnt={setEnt}
+            setSha={setSha}
+            setPri={setPri}
+            searchType={searchType}
+            onChange={onchange}
+          />
+        )}
+        {ispriceopen && (
+          <PriceBox
+            minvalue={minvalue}
+            setMinvalue={setMinvalue}
+            maxvalue={maxvalue}
+            setMaxvalue={setMaxvalue}
+            searchPrice={searchPrice}
+            searchType={searchType}
+          />
+        )}
       </Tag>
       <div>
         {props.roomdata.map(room => {
-          return <ListCard data={room} key={room.id} />;
+          return (
+            <ListCard data={room} key={room.id} initialdata={props.frontdata} />
+          );
         })}
       </div>
+
       <PageNum>
         <span>1</span>
         <span>2</span>
@@ -54,13 +103,13 @@ const Title = styled.h1`
 
 const Tag = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 130px;
   margin: 40px 0 35px 20px;
   font-weight: 500;
   cursor: pointer;
 
   span {
+    display: block;
+    margin-right: 10px;
     padding: 8px;
     border: 1px solid rgb(160 160 160);
     border-radius: 30px;

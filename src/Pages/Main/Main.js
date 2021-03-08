@@ -15,8 +15,8 @@ const Main = () => {
   const [focusedInput, setfocusedInput] = useState(null);
   const [person, setPerson] = useState(0);
   const moment = require('moment');
-  const startday = moment(date.startdate).format('YYYY_MM_DD');
-  const endday = moment(date.enddate).format('YYYY_MM_DD');
+  const startday = moment(date.startdate).format('YYYY-MM-DD');
+  const endday = moment(date.enddate).format('YYYY-MM-DD');
 
   const subtractPerson = () => {
     if (person > 0) {
@@ -39,7 +39,7 @@ const Main = () => {
       </MainImg>
       <ReserveBox>
         <h3>
-          위치 <input placeholder="선릉" disabled />
+          <p>위치</p> <input placeholder="선릉" disabled />
         </h3>
         <DateRangePicker
           startDate={date.startdate}
@@ -122,6 +122,12 @@ const ReserveBox = styled.div`
   h3 {
     display: flex;
     flex-direction: column;
+    padding-bottom: 10px;
+    font-weight: 800;
+    p {
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
     input {
       border: none;
     }
