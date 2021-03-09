@@ -5,10 +5,12 @@ import styled from 'styled-components';
 import Dropdown from './Dropdown';
 //import Calendar from './Calendar';
 
-const BookingCard = ({ data }, props) => {
+const BookingCard = ({ data, initialstate }) => {
   const [drop, setDrop] = useState(false);
   const history = useHistory();
   const [dateDiff, setdateDiff] = useState(0);
+
+  console.log('우라라랄랄', initialstate.endDate);
 
   //dateDiff = Math.ceil(endday.getTime()-startday.getTime()/(1000*3600*24))
   //dateDiff는 차이 일수를 정수로 변환
@@ -38,14 +40,14 @@ const BookingCard = ({ data }, props) => {
       <CheckBox>
         <CheckIn>
           체크인
-          <p className="firstday">2021. 03. 21</p>
+          <p className="firstday">{initialstate.startDate}</p>
         </CheckIn>
         <CheckOut>
           체크아웃
-          <p className="lastday">2021. 04. 01</p>
+          <p className="lastday">{initialstate.endDate}</p>
         </CheckOut>
         <Personnel onClick={() => setDrop(!drop)}>
-          인원<p className="guest">게스트 7명</p>
+          인원<p className="guest">게스트 {initialstate.person}명</p>
         </Personnel>
       </CheckBox>
       {drop && <Dropdown maxPeople={data.maxPeople} />}

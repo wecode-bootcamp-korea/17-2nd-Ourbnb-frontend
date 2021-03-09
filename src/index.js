@@ -4,9 +4,9 @@ import GlobalStyles from './styles/GlobalStyles';
 import Routes from './Routes';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <GlobalStyles />
-    <Routes />,
-  </React.StrictMode>,
+    <Routes />
+  </>,
   document.getElementById('root')
 );
