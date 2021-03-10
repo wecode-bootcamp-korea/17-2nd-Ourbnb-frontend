@@ -2,35 +2,32 @@ import React, { Component } from 'react';
 import './Payment.scss';
 import Reservation from './components/Reservation';
 import PaymentList from './components/PaymentList';
-// import creditPayment from './components/creditPayment';
 
 class Payment extends Component {
-  // kakaopay = () => {
-  //   fetch('kapi.kakao.com/v1/payment/ready', {
-  //     method: 'POST',
-  //     headers: {
-  //       Authorization: '9f0ce3f812df42bd6fbf84fc29f7e098', //TODO: admin key 등록
-  //       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-  //     },
-  //     body: {
-  //       cid: `TC0ONETIME`,
-  //       partner_order_id: '1001',
-  //       partner_user_id: 'german',
-  //       item_name: 'Ourbnb호갱패키지',
-  //       quantity: '1',
-  //       total_amount: '100',
-  //       tax_free_amout: '0',
-  //       approval_url: 'http://localhost:3000',
-  //       cancel_url: 'http://localhost:3000',
-  //       fail_url: 'http://localhost:3000',
-  //     },
-  //   })
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       console.log(res);
-  //     });
-  //   console.log('실행');
-  // };
+  cardPayment = () => {
+    const {
+      accommodation_id,
+      startDate,
+      endDate,
+      totalPrices,
+      person,
+    } = this.props.location.state;
+    fetch('http://10.58.1.24:8000/reservation/purchase', {
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.getItem('access_token'),
+      },
+      body: JSON.stringify({
+        accommodation_id: accommodation_id,
+        start_date: startDate,
+        end_date: endDate,
+        total_price: totalPrices[0],
+        total_guest: person,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => this.history.push('/mypage'));
+  };
 
   render() {
     return (
@@ -76,15 +73,13 @@ class Payment extends Component {
                 className="kakaoImg"
                 alt="kakao"
               ></img>
-              <button className="requireReservation" onClick={this.kakaopay}>
+              <button className="requireReservation" onClick={this.cardPayment}>
                 카카오 결제하기
               </button>
             </div>
           </div>
         </div>
-        <div className="paymentDetail">
-          <img alt="img"></img>
-        </div>
+        <div className="paymentDetail"></div>
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React from 'react';
 
 class PaymentList extends React.Component {
   render() {
+    console.log('aaaa', this.props.price.totalPrices[1]);
     const totalAmount = Number(
       this.props.price.onedayPrice * this.props.price.countDay
     ).toLocaleString();
@@ -37,7 +38,9 @@ class PaymentList extends React.Component {
             </div>
             <div className="roomtotal">
               <span className="total">총 합계(KRW) </span>
-              <span className="totalPrice">{this.props.price.totalPrices}</span>
+              <span className="totalPrice">
+                {this.props.price.totalPrices[1]}
+              </span>
             </div>
           </article>
         </aside>

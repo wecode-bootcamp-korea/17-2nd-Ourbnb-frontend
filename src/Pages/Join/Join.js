@@ -1,4 +1,4 @@
-import './join.scss';
+import './Join.scss';
 import React, { Component } from 'react';
 import { kakaoapi } from '../../config';
 
