@@ -45,46 +45,46 @@ const DetailList = props => {
   };
 
   //서버 통신용
-  useEffect(() => {
-    const fetchdata = async () => {
-      if (state.startDate === `Invalid date`) {
-        state.startDate = '';
-      }
-      if (state.endDate === `Invalid date`) {
-        state.endDate = '';
-      }
-
-      try {
-        const result = await axios(
-          `${URL}/accommodation?checkin=${state.startDate}&checkout=${state.endDate}&guests=${state.person}`
-        );
-        console.log(result);
-        let mapdata = result.data.data.map(data => {
-          return { lat: data.lat, long: data.long };
-        });
-        setroomData(result.data.data);
-        setmapData(mapdata);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    fetchdata();
-  }, [state, state.endDate, state.person, state.startDate]);
-
-  //목데이터
   // useEffect(() => {
   //   const fetchdata = async () => {
-  //     const result = await axios('/data/roomListdata.json');
+  //     if (state.startDate === `Invalid date`) {
+  //       state.startDate = '';
+  //     }
+  //     if (state.endDate === `Invalid date`) {
+  //       state.endDate = '';
+  //     }
 
-  //     const mapdata = result.data.data.map(data => {
-  //       return { lat: data.lat, long: data.long };
-  //     });
-
-  //     setroomData(result.data.data);
-  //     setmapData(mapdata);
+  //     try {
+  //       const result = await axios(
+  //         `${URL}/accommodation?checkin=${state.startDate}&checkout=${state.endDate}&guests=${state.person}`
+  //       );
+  //       console.log(result);
+  //       let mapdata = result.data.data.map(data => {
+  //         return { lat: data.lat, long: data.long };
+  //       });
+  //       setroomData(result.data.data);
+  //       setmapData(mapdata);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
   //   };
   //   fetchdata();
-  // }, []);
+  // }, [state, state.endDate, state.person, state.startDate]);
+
+  //목데이터
+  useEffect(() => {
+    const fetchdata = async () => {
+      const result = await axios('/data/roomListdata.json');
+
+      const mapdata = result.data.data.map(data => {
+        return { lat: data.lat, long: data.long };
+      });
+
+      setroomData(result.data.data);
+      setmapData(mapdata);
+    };
+    fetchdata();
+  }, []);
 
   //console.log('디테일리스트>>>>', props);
   return (

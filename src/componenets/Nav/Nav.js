@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { SiAirbnb } from 'react-icons/si';
 import { BsList } from 'react-icons/bs';
 import { FaRegUserCircle } from 'react-icons/fa';
@@ -9,6 +9,10 @@ import { RiLoginBoxLine } from 'react-icons/ri';
 import Join from '../../Pages/Join/Join';
 
 const Nav = () => {
+  const history = useHistory();
+  const goToMypage = () => {
+    history.push('/mypage');
+  };
   const [isJoin, setIsJoin] = useState(false);
   const menuClick = () => {
     setIsJoin(!isJoin);
@@ -30,7 +34,7 @@ const Nav = () => {
         <span>
           <BsList size={26} />
           <div>
-            <FaRegUserCircle size={28} />
+            <FaRegUserCircle size={28} onClick={goToMypage} />
           </div>
           {isJoin && <Join />}
         </span>
@@ -47,7 +51,8 @@ const Box = styled.div`
   padding: 10px;
   width: 100%;
   height: 80px;
-  border-bottom: 1px solid gray;
+  box-shadow: 0px 7px 50px -18px rgba(61, 61, 61, 0.65);
+  border: 1px solid #dddddd;
   p {
     display: flex;
     margin-top: 6px;

@@ -1,87 +1,95 @@
 {
-  "id":1,
-  "title":"★★빅데이터의 선구자 David Shim씨의 신논현 펜트하우스",
-  "address":"서울특별시 강남구 역삼동 618-19",
-  "lat":"37.502705",
-  "long":"127.028149",
+  "id": 1,
+  "title": "★★빅데이터의 선구자 David Shim씨의 신논현 펜트하우스",
+  "address": "서울특별시 강남구 역삼동 618-19",
+  "lat": "37.502705",
+  "long": "127.028149",
   "firstImg": "https://images.unsplash.com/photo-1502672023488-70e25813eb80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1559&q=80",
-  "img":[
-    "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
-    "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1573&q=80",
-    "https://images.unsplash.com/photo-1499916078039-922301b0eb9b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80",
-    "https://images.unsplash.com/photo-1493150134366-cacb0bdc03fe?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
-    "https://images.unsplash.com/photo-1504624720567-64a41aa25d70?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80"
+  "img": [
+      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1573&q=80",
+      "https://images.unsplash.com/photo-1499916078039-922301b0eb9b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80",
+      "https://images.unsplash.com/photo-1493150134366-cacb0bdc03fe?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80",
+      "https://images.unsplash.com/photo-1504624720567-64a41aa25d70?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80"
   ],
-    "onedayPrice":"170000.00",
-    "cleaningFee":"40000.00",
-    "hostName":"최호진",
-    "maxPeople":7,
-    "bedrooms":3,
-    "beds":1,
-    "bathrooms":1,
-    "hostProfil":"https://images.unsplash.com/photo-1501820488136-72669149e0d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    "roomType":["집 전체","주택 전체를 단독으로 사용하시게 됩니다."],
-    "description":"가성비 럭셔리 펜트하우스 모든 게 새거입니다",
-    "totalCount": 5,
-    "totalAvg": "3.0",
-    "grade":[
+  "description": "가성비 럭셔리 펜트하우스 모든 게 새거입니다",
+  "onedayPrice": "1000000.00",
+  "cleaningFee": "130000.00",
+  "hostName": "최호진",
+  "hostProfile": "https://images.unsplash.com/photo-1501820488136-72669149e0d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+  "roomType": 
+        {
+          "name": "집 전체",
+          "description": "집 전체를 단독으로 사용합니다"
+        }
+    ,
+  "maxPeople": 5,
+  "beds": 5,
+  "bedrooms": 5,
+  "bathrooms": 3,
+  "totalCount": 5,
+  "totalAvg": "3.50",
+  "grade": [
       {
-      "average":2.6,
-      "gradeValue":52
-    },
-    {
-      "average":3.6,
-      "gradeValue":72
-    },{
-      "average":1.8,
-      "gradeValue":36
-    },{
-      "average":3.0,
-      "gradeValue":60
-    },{
-      "average":3.2,
-      "gradeValue":64
-    },{
-      "average":3.6,
-      "gradeValue":72
-    }
+          "average": "3.0",
+          "gradeValue": 60
+      },
+      {
+          "average": "3.2",
+          "gradeValue": 64
+      },
+      {
+          "average": "3.6",
+          "gradeValue": 72
+      },
+      {
+          "average": "3.4",
+          "gradeValue": 68
+      },
+      {
+          "average": "4.0",
+          "gradeValue": 80
+      },
+      {
+          "average": "3.8",
+          "gradeValue": 76
+      }
   ],
-    "comment":[
+  "comment": [
       {
-        "reviewid": 1,
-        "userName": "최호진",
-        "userProfile": "https://images.unsplash.com/photo-1501820488136-72669149e0d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-        "content": "와 csv 파일 만드는거 정말 노가다네용 ",
-        "createdAt": "202103"
-    },
-    {
-      "reviewid":2,
-      "userProfile":"https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s150x150/69327386_2238427336284977_6907879374293303296_n.jpg?tp=1&_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=FVpmguxSti4AX8aJCWB&oh=66428bfe7558b3d8a37ef02abe2e85fa&oe=606ACB64",
-      "userName":"hyesung",
-      "createdAt": "2021년 2월",
-      "content":"위치가 정말 좋습니다. 가격대비 정말 훌륭했고요..! 옥탑방에 대한 로망을 실현할 수 있어서 좋았습니다. 빔과 평상 설치하시게 된다면 다음에 다시 오고 싶어요! 갑자기 날씨가 추워져서 조금 춥긴 했고, 장기 여행 중이라 캐리어를 가져갔는데 계단을 오르기에는 힘들더라구요... 그점 빼고는 매우 좋았고 호스트님의 상세한 설명 덕분에 어려움없이 편히 쉬다 갑니다!"
-    },
-    {
-      "reviewid":3,
-      "userProfile":"https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s150x150/69327386_2238427336284977_6907879374293303296_n.jpg?tp=1&_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=FVpmguxSti4AX8aJCWB&oh=66428bfe7558b3d8a37ef02abe2e85fa&oe=606ACB64",
-      "userName":"lololo",
-      "createdAt": "2021년 2월",
-      "content":"위치가 정말 좋습니다. 가격대비 정말 훌륭했고요..! 옥탑방에 대한 로망을 실현할 수 있어서 좋았습니다. 빔과 평상 설치하시게 된다면 다음에 다시 오고 싶어요! 갑자기 날씨가 추워져서 조금 춥긴 했고, 장기 여행 중이라 캐리어를 가져갔는데 계단을 오르기에는 힘들더라구요... 그점 빼고는 매우 좋았고 호스트님의 상세한 설명 덕분에 어려움없이 편히 쉬다 갑니다!"
-    },
-    {
-      "reviewid":4,
-      "userProfile":"https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s150x150/69327386_2238427336284977_6907879374293303296_n.jpg?tp=1&_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=FVpmguxSti4AX8aJCWB&oh=66428bfe7558b3d8a37ef02abe2e85fa&oe=606ACB64",
-      "userName":"hyesung",
-      "createdAt": "2021년 2월",
-      "content":"위치가 정말 좋습니다. 가격대비 정말 훌륭했고요..! 옥탑방에 대한 로망을 실현할 수 있어서 좋았습니다. 빔과 평상 설치하시게 된다면 다음에 다시 오고 싶어요! 갑자기 날씨가 추워져서 조금 춥긴 했고, 장기 여행 중이라 캐리어를 가져갔는데 계단을 오르기에는 힘들더라구요... 그점 빼고는 매우 좋았고 호스트님의 상세한 설명 덕분에 어려움없이 편히 쉬다 갑니다!"
-    },
-    {
-      "reviewid":5,
-      "userProfile":"https://scontent-gmp1-1.cdninstagram.com/v/t51.2885-19/s150x150/69327386_2238427336284977_6907879374293303296_n.jpg?tp=1&_nc_ht=scontent-gmp1-1.cdninstagram.com&_nc_ohc=FVpmguxSti4AX8aJCWB&oh=66428bfe7558b3d8a37ef02abe2e85fa&oe=606ACB64",
-      "userName":"hyesung",
-      "createdAt": "2021년 2월",
-      "content":"위치가 정말 좋습니다. 가격대비 정말 훌륭했고요..! 옥탑방에 대한 로망을 실현할 수 있어서 좋았습니다. 빔과 평상 설치하시게 된다면 다음에 다시 오고 싶어요! 갑자기 날씨가 추워져서 조금 춥긴 했고, 장기 여행 중이라 캐리어를 가져갔는데 계단을 오르기에는 힘들더라구요... 그점 빼고는 매우 좋았고 호스트님의 상세한 설명 덕분에 어려움없이 편히 쉬다 갑니다!"
-    }
+          "reviewid": 1,
+          "userName": "최호진",
+          "userProfile": "https://images.unsplash.com/photo-1501820488136-72669149e0d4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+          "content": "와 csv 파일 만드는거 정말 노가다네용 ",
+          "createdAt": "202103"
+      },
+      {
+          "reviewid": 2,
+          "userName": "김호진",
+          "userProfile": "https://images.unsplash.com/photo-1511044568932-338cba0ad803?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+          "content": "와 csv 파일 만드는거 정말 노가다네용 ",
+          "createdAt": "202103"
+      },
+      {
+          "reviewid": 3,
+          "userName": "백호진",
+          "userProfile": "https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1583&q=80",
+          "content": "와 csv 파일 만드는거 정말 노가다네용 ",
+          "createdAt": "202103"
+      },
+      {
+          "reviewid": 4,
+          "userName": "규크레인",
+          "userProfile": "https://images.unsplash.com/photo-1491485880348-85d48a9e5312?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+          "content": "와 csv 파일 만드는거 정말 노가다네용 ",
+          "createdAt": "202103"
+      },
+      {
+          "reviewid": 5,
+          "userName": "갓한아님",
+          "userProfile": "https://images.unsplash.com/photo-1598188306155-25e400eb5078?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1567&q=80",
+          "content": "와 csv 파일 만드는거 정말 노가다네용 ",
+          "createdAt": "202103"
+      }
   ]
-  
 }

@@ -1,39 +1,54 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
-//import { DateRangePicker } from 'react-date-range';
 import styled from 'styled-components';
 import Dropdown from './Dropdown';
-//import Calendar from './Calendar';
 
-const BookingCard = ({ data, initialstate }) => {
+const BookingCard = ({ result, initialstate }) => {
   const [drop, setDrop] = useState(false);
+
   const history = useHistory();
-  const [dateDiff, setdateDiff] = useState(0);
 
-  console.log('우라라랄랄', initialstate.endDate);
+  let firstDay = new Date(initialstate.startDate);
+  let lastDay = new Date(initialstate.endDate);
 
-  //dateDiff = Math.ceil(endday.getTime()-startday.getTime()/(1000*3600*24))
-  //dateDiff는 차이 일수를 정수로 변환
-
-  //console.log(data.onedayPrice);
-  //console.log(props.checkday && props.checkday);
-  // const handleClick = () => {
-  //   setDrop(!drop);
-  // };
+  let countDay = Math.ceil(
+    (lastDay.getTime() - firstDay.getTime()) / (1000 * 3600 * 24)
+  );
 
   const goToPurchase = () => {
     if (localStorage.getItem('access_token')) {
-      history.push('/detaillist');
+      history.push({
+        pathname: '/Payment',
+        state: {
+          initialstate: initialstate,
+          onedayPrice: result.onedayPrice,
+          cleaningFee: result.cleaningFee,
+          totalPrices: totalPrices,
+          title: result.title,
+          countDay: countDay,
+          totalAvg: result.totalAvg,
+          firstImg: result.firstImg,
+        },
+      });
     } else {
       alert('로그인해주세요');
       history.push('/');
     }
+    window.scrollTo({ top: 0 });
   };
+
+  const totalPrices = Number(
+    result.cleaningFee * 1 + result.onedayPrice * countDay
+  ).toLocaleString();
+
+  console.log(totalPrices);
   return (
     <Card>
       <Header>
         <Oneday>
-          ₩{data.onedayPrice && `${Number(data.onedayPrice).toLocaleString()}`}
+          ₩
+          {result.onedayPrice &&
+            `${Number(result.onedayPrice).toLocaleString()}`}
         </Oneday>
         <Day>/박</Day>
       </Header>
@@ -50,7 +65,7 @@ const BookingCard = ({ data, initialstate }) => {
           인원<p className="guest">게스트 {initialstate.person}명</p>
         </Personnel>
       </CheckBox>
-      {drop && <Dropdown maxPeople={data.maxPeople} />}
+      {drop && <Dropdown maxPeople={result.maxPeople} />}
       <Booking onClick={goToPurchase}>
         <p>예약하기</p>
       </Booking>
@@ -59,43 +74,42 @@ const BookingCard = ({ data, initialstate }) => {
         <DetailPrice>
           <span>
             ₩
-            {data.onedayPrice && `${Number(data.onedayPrice).toLocaleString()}`}
-            x16박
+            {result.onedayPrice &&
+              `${Number(result.onedayPrice).toLocaleString()}`}
+            x{countDay}박
           </span>
           <span>
             ₩
-            {data.onedayPrice && `${Number(data.onedayPrice).toLocaleString()}`}
+            {result.onedayPrice &&
+              `${Number(result.onedayPrice * countDay).toLocaleString()}`}
           </span>
         </DetailPrice>
         <DetailPrice>
           <span>서비스 수수료</span>
           <span>
             ₩
-            {data.cleaningFee && `${Number(data.cleaningFee).toLocaleString()}`}
+            {result.cleaningFee &&
+              `${Number(result.cleaningFee).toLocaleString()}`}
           </span>
         </DetailPrice>
       </Price>
       <TotalPrice>
         <span className="total">총 합계</span>
-        <span className="total">{`₩${Number(
-          data.cleaningFee * 1 + data.onedayPrice * 1
-        ).toLocaleString()}`}</span>
+        <span className="total">₩{totalPrices}</span>
       </TotalPrice>
     </Card>
   );
 };
-//{Math.floor(goal_amount).toLocaleString()}
+
 export default BookingCard;
 
 const Card = styled.div`
-  //position: sticky;
   display: flex;
   flex-direction: column;
   width: 375px;
   height: 440px;
   margin-top: 48px;
   padding: 24px;
-  //background-color: skyblue;
   border-radius: 10px;
   box-shadow: 0px 0px 11px 0px rgba(61, 61, 61, 0.65);
   p {
@@ -109,19 +123,16 @@ const Header = styled.div`
 
 const CheckBox = styled.div`
   display: flex;
-  /* flex-direction: row; */
   flex-wrap: wrap;
   margin-top: 20px;
   width: 325px;
   height: 115px;
-  //background-color: yellow;
 `;
 
 const CheckIn = styled.div`
   width: 162.5px;
   height: 60px;
   padding: 15px 0 0 15px;
-  //background-color: skyblue;
   border: 1px solid #dddddd;
   font-size: 11px;
   border-top-left-radius: 15px;
@@ -136,7 +147,6 @@ const CheckOut = styled.div`
   width: 162.5px;
   height: 60px;
   padding: 15px 0 0 15px;
-  //background-color: olive;
   border: 1px solid #dddddd;
   font-size: 11px;
   border-top-right-radius: 15px;
@@ -152,7 +162,6 @@ const Personnel = styled.div`
   width: 325px;
   height: 60px;
   padding: 15px 0 0 15px;
-  //background-color: orange;
   border: 1px solid #dddddd;
   font-size: 11px;
   border-bottom-right-radius: 15px;
@@ -203,7 +212,6 @@ const DetailPrice = styled.div`
   }
 `;
 const Price = styled.div`
-  //background-color: yellowgreen;
   height: 125px;
 
   p {
@@ -218,7 +226,6 @@ const TotalPrice = styled.div`
   justify-content: space-between;
   width: 325px;
   height: 45px;
-  //background-color: lightcoral;
   border-top: 1px solid #dddddd;
 
   .total {

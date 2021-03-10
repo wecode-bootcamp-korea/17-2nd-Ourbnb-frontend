@@ -2,20 +2,24 @@ import React from 'react';
 
 class PaymentList extends React.Component {
   render() {
+    const totalAmount = Number(
+      this.props.price.onedayPrice * this.props.price.countDay
+    ).toLocaleString();
     return (
       <div>
         <aside className="paymentBox">
           <section className="photoBox">
             <div className="photo">
-              <img src="/images/여행.jpg" className="photo2" alt="travel" />
+              <img
+                src={this.props.price.firstImg}
+                className="photo2"
+                alt="travel"
+              />
               <div className="text">
-                <p className="textTitle">ourbnb의 레지던스</p>
-                <p>
-                  [99%할인] 뷰가 좋은 10층에서 감금당하면서 행복하게 코딩하기
-                  좋습니다!
-                </p>
-                <p>거실1 큰방1 작은방1</p>
-                <span className="star">★</span> <span>4.98</span>
+                <p className="textTitle">ourbnb의 /레지던스/</p>
+                <p>{this.props.price.title}</p>
+                <span className="star">★</span>{' '}
+                <span>{this.props.price.totalAvg}</span>
               </div>
             </div>
           </section>
@@ -23,15 +27,17 @@ class PaymentList extends React.Component {
           <article className="paymentChk">
             <div className="roomInfo">
               <span className="roomBerth">숙소</span>
-              <span className="roomPrice">$price</span>
+              <span className="roomPrice">{totalAmount}</span>
             </div>
             <div className="roomService">
               <span className="ServiceFees">서비스 수수료</span>
-              <span className="feesPrice">$Price</span>
+              <span className="feesPrice">
+                {Number(this.props.price.cleaningFee).toLocaleString()}
+              </span>
             </div>
             <div className="roomtotal">
               <span className="total">총 합계(KRW) </span>
-              <span className="totalPrice">$Price</span>
+              <span className="totalPrice">{this.props.price.totalPrices}</span>
             </div>
           </article>
         </aside>

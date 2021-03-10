@@ -2,15 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Postscript = props => {
-  //console.log('리뷰로 데이터가 받아왔을까나>>>', props);
   const { userProfile, username, createdAt, content } = props;
+  const strDay = createdAt.toString();
+  const cutYear = strDay.slice(0, 4);
+  const cutMonth = strDay.slice(4);
+
   return (
     <Container>
       <HeaderBox>
         <img src={userProfile} alt="userprofile" />
         <CommentBox>
           <p className="userInfo">{username}</p>
-          <p className="update">{createdAt}</p>
+          <p className="update">
+            {cutYear}년 {cutMonth}월
+          </p>
         </CommentBox>
       </HeaderBox>
       <ContentText>{content}</ContentText>
@@ -26,7 +31,6 @@ const Container = styled.div`
   height: 230px;
   flex-direction: column;
   flex-wrap: nowrap;
-  //background-color: yellow;
   margin-bottom: 20px;
   margin-right: 120px;
 `;
@@ -50,7 +54,6 @@ const CommentBox = styled.div`
   flex-wrap: nowrap;
   width: 100%;
   height: 56px;
-  //background-color: skyblue;
   padding-top: 10px;
 
   .userInfo {

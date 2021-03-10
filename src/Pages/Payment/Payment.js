@@ -31,13 +31,14 @@ class Payment extends Component {
   //     });
   //   console.log('실행');
   // };
+
   render() {
     return (
       <div className="payment">
         <header className="reservation"> 〈 확인 및 결제</header>
         <div className="information">
           <div className="reservationContainer">
-            <Reservation />
+            <Reservation payInfo={this.props.location.state} />
             <article className="paymentComponents">
               <header className="paymentHeader">
                 결제수단
@@ -68,7 +69,7 @@ class Payment extends Component {
             </article>
           </div>
           <div className="paymentContainer">
-            <PaymentList />
+            <PaymentList price={this.props.location.state} />
             <div className="kakaopay">
               <img
                 src="/images/kakao.jpg"

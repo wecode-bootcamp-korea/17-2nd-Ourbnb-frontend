@@ -2,15 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const GradeList = ({ data }) => {
-  //console.log('랭킹>>>', data);
-  // const { grade } = data;
   return (
     <GradeContainer>
       <div>
         <RankingBox>
           <div className="name">청결도</div>
           <div className="progressBarAll">
-            {/* <div className="progressBarPlay" style={{ width: 30 }} /> */}
             <div
               className="progressBarPlay"
               style={{ width: `${data[0].gradeValue && data[0].gradeValue}%` }}
@@ -51,7 +48,7 @@ const GradeList = ({ data }) => {
           <p className="update">{data[3].average && data[3].average}</p>
         </RankingBox>
         <RankingBox>
-          <div>체크인</div>
+          <div className="name">체크인</div>
           <div className="progressBarAll">
             <div
               className="progressBarPlay"
@@ -79,19 +76,34 @@ export default GradeList;
 
 const GradeContainer = styled.div`
   display: flex;
+  //background-color: pink;
 `;
 
 const RankingBox = styled.div`
   display: flex;
-  width: 300px;
+  width: 600px;
   height: 50px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  position: relative;
 
   .name {
-    width: 200x;
+    width: 350px;
     height: 50px;
+    padding-top: 20px;
+  }
+
+  .update {
+    position: absolute;
+    top: 20px;
+    left: 530px;
+    font-size: 12px;
   }
   .progressBarAll {
     background-color: #e6eaed;
+    position: absolute;
+    top: 15px;
+    left: 400px;
     width: 100px;
     height: 4px;
     border-radius: 20px;
@@ -100,6 +112,7 @@ const RankingBox = styled.div`
 
     .progressBarPlay {
       background-color: #000;
+
       height: 4px;
       border-radius: 20px;
     }
