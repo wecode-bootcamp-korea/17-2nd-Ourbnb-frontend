@@ -12,12 +12,14 @@ class Join extends Component {
           headers: {
             Authorization: response.access_token,
           },
+          body: {},
         })
           .then(res => res.json())
           .then(res => {
             if (res.access_token) {
               localStorage.setItem('access_token', res.access_token);
               alert('로그인성공');
+              // history.push('/')
             } else {
               alert('다시확인해주세요');
             }
