@@ -11,7 +11,6 @@ const Location = ({ data, google }) => {
 
   const maplat = parseFloat(data.lat);
   const maplng = parseFloat(data.long);
-  console.log('과연없는건가>>>>', data.lat);
   const onEventChecker = (e, aug, geo) => {};
   return (
     <Container>
@@ -54,14 +53,12 @@ const LocationTitle = styled.p`
 const Container = styled.div`
   position: relative;
   width: 1245px;
-  height: 1000px;
+  height: 700px;
   padding-top: 40px;
-  background-color: skyblue;
 `;
 const MapContainer = styled.div`
   position: absolute;
   top: 90px;
   width: 100%;
   height: 600px;
-  background-color: skyblue;
 `;

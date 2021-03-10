@@ -1,4 +1,4 @@
-import './Join.scss';
+import './join.scss';
 import React, { Component } from 'react';
 import { kakaoapi } from '../../config';
 
@@ -31,9 +31,9 @@ class Join extends Component {
       },
     });
   };
-  handleData = () => {
-    this.setState({ isstatus: this.state.isstatus });
-  };
+  // handleData = () => {
+  //   this.setState({ isstatus: this.state.isstatus });
+  // };
 
   render() {
     const { handlePropsData } = this.props;

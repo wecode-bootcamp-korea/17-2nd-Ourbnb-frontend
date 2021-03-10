@@ -1,28 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-//import Dropdown from './Dropdown';
-const RoomDetail = ({ data }) => {
+
+const RoomDetail = ({ result }) => {
   return (
     <Manual>
       <SmallTitle>
         <RoomTitle>
-          {data.hostName && data.hostName}님이 호스팅하는&nbsp;
-          {data.roomType && data.roomType[0]}
+          {result.hostName && result.hostName}님이 호스팅하는&nbsp;
+          {result.roomType && result.roomType.name}
         </RoomTitle>
         <MaxPeople>
-          최대 인원 {data.maxPeople}명 ∙ 침실 {data.bedrooms}개 ∙ 침대{' '}
-          {data.beds}개 ∙ 욕실 {data.bathrooms}개
+          최대 인원 {result.maxPeople}명 ∙ 침실 {result.bedrooms}개 ∙ 침대{' '}
+          {result.beds}개 ∙ 욕실 {result.bathrooms}개
         </MaxPeople>
-        <img src={data.hostProfil} alt="profil" />
+        <img src={result.hostProfile} alt="profil" />
       </SmallTitle>
       <Content>
         <div className="resData">
           <img className="icon" src="/images/home.png" alt="shining" />
           <span className="contentName">
-            {data.roomType && data.roomType[0]}
+            {result.roomType && result.roomType.name}
           </span>
         </div>
-        <p>{data.roomType && data.roomType[1]}</p>
+        <p>{result.roomType && result.roomType.description}</p>
         {CONTENT.map(text => (
           <>
             <div>
@@ -34,7 +34,7 @@ const RoomDetail = ({ data }) => {
         ))}
       </Content>
       <Explanati>
-        <p>{data.description && data.description}</p>
+        <p>{result.description && result.description}</p>
       </Explanati>
       <Amenities>
         <h1>편의시설</h1>
@@ -60,8 +60,6 @@ export default RoomDetail;
 
 const Manual = styled.div`
   width: 880px;
-  //height: 850px;
-  //background-color: yellowgreen;
   margin: 0 20px 0 0;
 `;
 
@@ -77,7 +75,6 @@ const MaxPeople = styled.p`
 const SmallTitle = styled.div`
   width: 655px;
   position: relative;
-  //background-color: pink;
   padding: 48px 0 24px 0;
   border-bottom: 1px solid #dddddd;
 
@@ -92,9 +89,7 @@ const SmallTitle = styled.div`
 `;
 
 const Content = styled.div`
-  //background-color: skyblue;
   width: 655px;
-  //height: 320px;
   padding: 10px 0 32px 0;
   border-bottom: 1px solid #dddddd;
 
@@ -134,7 +129,6 @@ const Content = styled.div`
 `;
 
 const Explanati = styled.div`
-  //background-color: hotpink;
   width: 655px;
   font-size: 16px;
 
@@ -149,10 +143,7 @@ const Explanati = styled.div`
 const Amenities = styled.div`
   width: 655px;
   height: 370px;
-  //background-color: gold;
   padding: 48px 0;
-  //margin-bottom: 40px;
-  //border-bottom: 1px solid #dddddd;
 
   h1 {
     font-size: 22px;
@@ -169,7 +160,6 @@ const Amenities = styled.div`
       display: flex;
       width: 320px;
       height: 25px;
-      //background-color: pink;
       margin-bottom: 16px;
 
       img {
