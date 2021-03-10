@@ -18,6 +18,8 @@ const Nav = () => {
     setIsJoin(!isJoin);
   };
 
+  // const handleUpload = e => {
+
   return (
     <Box>
       <Link to="/">
@@ -27,6 +29,13 @@ const Nav = () => {
         </p>
       </Link>
       <Navicon>
+        {/* <input
+          type="file"
+          name="hostsubmit"
+          encType="multipart/form-data"
+          accept="image/*,audio/*,video/mp4,video/x-m4v,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,.csv"
+          onSubmit={e => handleUpload}
+        ></input> */}
         <h1>호스트 되기</h1>
         <div>
           <RiLoginBoxLine size={27} onClick={menuClick} />

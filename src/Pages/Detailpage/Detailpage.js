@@ -29,6 +29,7 @@ const Detailpage = props => {
   //'/data/detail.json'
   //Data
   //`http://10.58.1.88:8000/accommodation/${props.match.params.id}`
+  console.log('나야');
 
   return (
     <Container>

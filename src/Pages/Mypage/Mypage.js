@@ -14,7 +14,7 @@ const Mypage = props => {
 
   useEffect(() => {
     const fetchMyData = async () => {
-      const result = await axios('http://10.58.5.38:8000/reservation', {
+      const result = await axios('http://10.58.1.24:8000/reservation', {
         headers: {
           Authorization: localStorage.getItem('access_token'),
         },

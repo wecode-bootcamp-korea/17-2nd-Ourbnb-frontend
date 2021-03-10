@@ -23,8 +23,9 @@ const BookingCard = ({ result, initialstate }) => {
           initialstate: initialstate,
           onedayPrice: result.onedayPrice,
           cleaningFee: result.cleaningFee,
-          totalPrices: totalPrices,
+          totalPrices: [totalPriceBack, totalPrices],
           title: result.title,
+          accommodation_id: result.id,
           countDay: countDay,
           totalAvg: result.totalAvg,
           firstImg: result.firstImg,
@@ -37,10 +38,11 @@ const BookingCard = ({ result, initialstate }) => {
     window.scrollTo({ top: 0 });
   };
 
+  const totalPriceBack = result.cleaningFee + result.onedayPrice * countDay;
   const totalPrices = Number(
     result.cleaningFee * 1 + result.onedayPrice * countDay
   ).toLocaleString();
-
+  console.log('뱍', totalPriceBack);
   console.log(totalPrices);
   return (
     <Card>
