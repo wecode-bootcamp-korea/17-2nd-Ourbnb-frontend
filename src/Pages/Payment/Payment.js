@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import './Payment.scss';
 import Reservation from './components/Reservation';
 import PaymentList from './components/PaymentList';
+import { baseURL } from '../../config';
 
 class Payment extends Component {
   cardPayment = () => {
     const {
       accommodation_id,
-      startDate,
-      endDate,
       totalPrices,
-      person,
+      initialstate,
     } = this.props.location.state;
-    fetch('http://10.58.1.24:8000/reservation/purchase', {
+
+    fetch(`${baseURL}/reservation/purchase`, {
       method: 'POST',
       headers: {
         Authorization: localStorage.getItem('access_token'),
       },
       body: JSON.stringify({
         accommodation_id: accommodation_id,
-        start_date: startDate,
-        end_date: endDate,
+        start_date: initialstate.startDate,
+        end_date: initialstate.endDate,
         total_price: totalPrices[0],
-        total_guest: person,
+        total_guest: initialstate.person,
       }),
     })
       .then(res => res.json())
-      .then(res => this.history.push('/mypage'));
+      .then(res => {
+        alert('결제완료 되었습니다. 감사합니다.');
+      });
+
+    this.props.history.push('/mypage');
   };
 
   render() {
@@ -85,4 +90,4 @@ class Payment extends Component {
   }
 }
 
-export default Payment;
+export default withRouter(Payment);

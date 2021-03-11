@@ -2,10 +2,10 @@ import React from 'react';
 
 class PaymentList extends React.Component {
   render() {
-    console.log('aaaa', this.props.price.totalPrices[1]);
     const totalAmount = Number(
       this.props.price.onedayPrice * this.props.price.countDay
     ).toLocaleString();
+
     return (
       <div>
         <aside className="paymentBox">
@@ -17,7 +17,9 @@ class PaymentList extends React.Component {
                 alt="travel"
               />
               <div className="text">
-                <p className="textTitle">ourbnb의 /레지던스/</p>
+                <p className="textTitle">
+                  ourbnb의 {this.props.price.roomType.name}
+                </p>
                 <p>{this.props.price.title}</p>
                 <span className="star">★</span>{' '}
                 <span>{this.props.price.totalAvg}</span>

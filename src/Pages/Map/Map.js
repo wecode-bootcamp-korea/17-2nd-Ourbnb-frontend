@@ -12,16 +12,10 @@ class MapAPI extends Component {
   };
 
   onMarkerClick = (props, marker) => {
-    this.setState(
-      {
-        showingInfoWindow: true,
-        activeMarker: marker,
-        // selectedPlace: props,
-      },
-      () => {
-        console.log(this.state.showingInfoWindow);
-      }
-    );
+    this.setState({
+      showingInfoWindow: true,
+      activeMarker: marker,
+    });
   };
 
   showRooms = () => {

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import UpcommingList from './UpcommingList';
 
 const Upcomming = ({ outcome }) => {
+  console.log('잠깐', outcome);
   return (
     <UpcomBox>
       {outcome &&

@@ -124,7 +124,8 @@ const ReserveBox = styled.div`
   margin: 0 auto;
   background-color: white;
   border-radius: 30px;
-  border: 1px solid rgb(217, 217, 217);
+  box-shadow: 0px 7px 50px -18px rgba(61, 61, 61, 0.65);
+  border: 1px solid #dddddd;
 
   h3 {
     display: flex;

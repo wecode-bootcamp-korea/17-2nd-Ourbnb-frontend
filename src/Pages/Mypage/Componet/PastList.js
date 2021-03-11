@@ -9,6 +9,7 @@ const PastList = props => {
     startDate,
     thumbnailImage,
   } = props;
+
   return (
     <>
       <PastListBox>

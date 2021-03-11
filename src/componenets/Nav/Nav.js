@@ -8,12 +8,13 @@ import { RiLoginBoxLine } from 'react-icons/ri';
 
 import Join from '../../Pages/Join/Join';
 
-const Nav = () => {
+const Nav = props => {
+  const { isJoin, setIsJoin } = props;
   const history = useHistory();
   const goToMypage = () => {
     history.push('/mypage');
   };
-  const [isJoin, setIsJoin] = useState(false);
+
   const menuClick = () => {
     setIsJoin(!isJoin);
   };
@@ -36,7 +37,7 @@ const Nav = () => {
           <div>
             <FaRegUserCircle size={28} onClick={goToMypage} />
           </div>
-          {isJoin && <Join />}
+          {isJoin && <Join isJoin={isJoin} setIsJoin={setIsJoin} />}
         </span>
       </Navicon>
     </Box>
