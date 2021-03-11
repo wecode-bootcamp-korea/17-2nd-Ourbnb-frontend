@@ -12,7 +12,6 @@ class Join extends Component {
           headers: {
             Authorization: response.access_token,
           },
-          body: {},
         })
           .then(res => res.json())
           .then(res => {
