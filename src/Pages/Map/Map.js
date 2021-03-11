@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import './Map.scss';
 import { APIKEY } from '../../config';
@@ -13,53 +12,44 @@ class MapAPI extends Component {
   };
 
   onMarkerClick = (props, marker) => {
-    this.setState({
-      showingInfoWindow: true,
-      activeMarker: marker,
-      // selectedPlace: props,
-    });
+    this.setState(
+      {
+        showingInfoWindow: true,
+        activeMarker: marker,
+        // selectedPlace: props,
+      },
+      () => {
+        console.log(this.state.showingInfoWindow);
+      }
+    );
   };
 
   showRooms = () => {
-    console.log('고고', this.props.mapdata);
     return this.props.mapdata.map((room, index) => {
       return (
         <Marker
-          icon={{
-            // url: img,
-            size: { width: 50, height: 50 },
-            anchor: { x: 15, y: 50 },
-            scaledSize: { width: 50, height: 50 },
-          }}
           key={index}
-          id={index}
           position={{
             lat: room['lat'],
             lng: room['long'],
           }}
           onClick={this.onMarkerClick}
         >
-          {/* {this.state.show && (
-            <InfoWindow marker={this.state.show}>
-              <div
-              // style={{
-              //   width: 100,
-              //   height: 100,
-              // }}
+          {this.state.showingInfoWindow && (
+            <InfoWindow
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}
+            >
+              <span
+                style={{
+                  width: 100,
+                  height: 100,
+                }}
               >
                 Info windowdsfdfgdgfdgf
-              </div>
+              </span>
             </InfoWindow>
-          )} */}
-          <InfoWindow
-            // marker={this.state.activeMarker}
-            onClose={this.onInfoWindowClose}
-            visible={this.state.showingInfoWindow}
-          >
-            <div>
-              <h4>lskfjlskjfdl;skaj fvlwkf;l</h4>
-            </div>
-          </InfoWindow>
+          )}
         </Marker>
       );
     });
@@ -70,7 +60,7 @@ class MapAPI extends Component {
   render() {
     const mapStyles = {
       width: '833px',
-      height: '100vh',
+      height: '1000px',
     };
 
     return (
@@ -81,8 +71,8 @@ class MapAPI extends Component {
         initialCenter={{
           // lat: this.props.mapdata[0].lat,
           // lng: this.props.mapdata[0].long,
-          lat: 37.490414,
-          lng: 127.029711,
+          lat: 37.50632661159643,
+          lng: 127.03090791778378,
         }}
         onClick={this.onEventChecker}
       >

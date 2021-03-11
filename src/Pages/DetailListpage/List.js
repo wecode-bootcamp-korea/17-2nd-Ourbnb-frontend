@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ListCard from './ListCard';
 import TypeBox from './TypelBox';
@@ -30,6 +29,7 @@ const List = props => {
   const startdayarr = props.checkdata.startDate.split('-');
   const enddayarr = props.checkdata.endDate.split('-');
   const { person } = props.checkdata;
+  const { fetchPage } = props;
 
   return (
     <Listcontainer>
@@ -38,7 +38,7 @@ const List = props => {
 
       <CheckInfo>
         {startdayarr[1]}월 {startdayarr[2]}일 - {enddayarr[1]}월 {enddayarr[2]}
-        일, 게스트 {person} 명
+        일, {person !== 0 && `게스트 ${person} 명`}
       </CheckInfo>
       <Title>지도에서 선택한 지역의 숙소</Title>
       <Tag>
@@ -69,19 +69,32 @@ const List = props => {
           />
         )}
       </Tag>
-      <div>
-        {props.roomdata.map(room => {
-          return (
-            <ListCard data={room} key={room.id} initialdata={props.frontdata} />
-          );
-        })}
-      </div>
+
+      {props.roomdata.map(room => {
+        return (
+          <ListCard data={room} key={room.id} initialdata={props.frontdata} />
+        );
+      })}
 
       <PageNum>
-        <span>1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>4</span>
+        <span data-idx={1} onClick={fetchPage}>
+          1
+        </span>
+        {props.pageindex > 1 && (
+          <span data-idx={2} onClick={fetchPage}>
+            2
+          </span>
+        )}
+        {props.pageindex > 2 && (
+          <span data-idx={3} onClick={fetchPage}>
+            3
+          </span>
+        )}
+        {props.pageindex > 3 && (
+          <span data-idx={4} onClick={fetchPage}>
+            4
+          </span>
+        )}
       </PageNum>
     </Listcontainer>
   );
@@ -91,8 +104,8 @@ export default List;
 
 const Listcontainer = styled.div`
   width: 50%;
-  height: 1000px;
-  overflow: scroll;
+  height: auto;
+  /* overflow: scroll; */
 `;
 
 const Title = styled.h1`
@@ -109,25 +122,31 @@ const Tag = styled.div`
 
   span {
     display: block;
-    margin-right: 10px;
-    padding: 8px;
+    margin-right: 20px;
+    padding: 12px;
     border: 1px solid rgb(160 160 160);
     border-radius: 30px;
     color: black;
+    &:hover {
+      border: 1px solid black;
+    }
   }
 `;
 
 const PageNum = styled.div`
   margin-top: 10px;
   text-align: center;
+  font-size: 17px;
 
   span {
     display: inline-block;
     padding: 10px;
     margin-right: 5px;
+    font-weight: 500;
     cursor: pointer;
-    border: 1px solid black;
-    border-radius: 30px;
+    &:hover {
+      color: rgb(160 160 160);
+    }
   }
 `;
 const ModalOutside = styled.div`
