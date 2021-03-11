@@ -35,7 +35,6 @@ const Footer = props => {
 export default Footer;
 
 const FooterBox = styled.div`
-  position: relative;
   width: 100%;
   height: 100%;
   display: flex;

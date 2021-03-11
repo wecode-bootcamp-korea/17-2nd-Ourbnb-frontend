@@ -4,7 +4,7 @@ import Map from '../Map/Map';
 import axios from 'axios';
 import styled from 'styled-components';
 import { baseURL } from '../../config';
-// import { Url } from 'url';
+import { useHistory } from 'react-router-dom';
 
 const DetailList = props => {
   const [isentire, setEnt] = useState(false);
@@ -31,7 +31,7 @@ const DetailList = props => {
     if (state.endDate === 'Invalid date') {
       state.endDate = '';
     }
-    // const firstrender = `checkin=${state.startDate}&checkout=${state.endDate}&guests=${state.person}`;
+
     const fetchdata = async () => {
       try {
         const result = await axios(
@@ -79,7 +79,7 @@ const DetailList = props => {
   } else {
     params.delete('max', maxvalue);
   }
-  // window.location.search = myUrl;
+
   const typeurl = params.toString();
   const typeurland = `&${typeurl}`;
 
@@ -98,11 +98,6 @@ const DetailList = props => {
     fetchdata();
     settypeOpen(false);
     setpriceopen(false);
-
-    //찾았다 내사랑
-    // let foo = `${defaultUrl}&${typeurl}`;
-    // window.location.search = `${defaultUrl}&${typeurl}`;
-    // console.log(window.location.search);
   };
 
   const fetchPage = async e => {
@@ -157,5 +152,6 @@ export default DetailList;
 const Listcontainer = styled.div`
   display: flex;
   position: relative;
+
   margin-bottom: 50px;
 `;

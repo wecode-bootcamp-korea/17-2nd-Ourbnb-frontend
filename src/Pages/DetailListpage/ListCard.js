@@ -13,6 +13,7 @@ const ListCard = ({ data, initialdata }) => {
       pathname: `/detail/${data.id}`,
       state: { initialstate: initialdata },
     });
+    window.scrollTo({ top: 0 });
   };
 
   return (

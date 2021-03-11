@@ -26,6 +26,7 @@ const BookingCard = ({ result, initialstate }) => {
           totalPrices: [totalPriceBack, totalPrices],
           title: result.title,
           accommodation_id: result.id,
+          roomType: result.roomType,
           countDay: countDay,
           totalAvg: result.totalAvg,
           firstImg: result.firstImg,

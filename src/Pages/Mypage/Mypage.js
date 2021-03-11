@@ -4,17 +4,18 @@ import Past from './Componet/Past';
 import Cancel from './Componet/Cancel';
 import axios from 'axios';
 import styled from 'styled-components';
+import { baseURL } from '../../config';
 
 const Mypage = props => {
   const [current, setCurrent] = useState(1);
-  const [past, setPast] = useState([]);
+  const [past, setPast] = useState();
   const [upcomming, setUpcomming] = useState([]);
   const [cancel, setCancel] = useState([]);
   const clickHandler = current => setCurrent(current);
 
   useEffect(() => {
     const fetchMyData = async () => {
-      const result = await axios('http://10.58.1.24:8000/reservation', {
+      const result = await axios(`${baseURL}/reservation`, {
         headers: {
           Authorization: localStorage.getItem('access_token'),
         },
@@ -29,9 +30,11 @@ const Mypage = props => {
       setUpcomming(upcomingReservations);
       setCancel(canceledReservations);
       setPast(pastReservations);
+      console.log('허혜성확인', result);
     };
     fetchMyData();
   }, []);
+
   return (
     <>
       <MypageContainer>
