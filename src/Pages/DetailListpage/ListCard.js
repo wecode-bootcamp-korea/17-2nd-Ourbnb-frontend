@@ -5,27 +5,22 @@ import { useHistory } from 'react-router';
 import Imgscrollbox from './Imgscrollbox';
 import { IoIosStar } from 'react-icons/io';
 import { FiHeart } from 'react-icons/fi';
-import { id } from 'date-fns/locale';
 
 const ListCard = ({ data, initialdata }) => {
   const history = useHistory();
   const goToDetail = () => {
-    console.log(`/detail/${data.id}`);
-    // history.push(`/detail/${data.id}`);
-
     history.push({
       pathname: `/detail/${data.id}`,
       state: { initialstate: initialdata },
     });
   };
 
-  console.log('진짜짲짜짜', initialdata);
   return (
-    <CardBox onClick={goToDetail}>
+    <CardBox>
       <h5>
         <Imgscrollbox data={data?.img} />
       </h5>
-      <Cardtext data={data?.img}>
+      <Cardtext data={data?.img} onClick={goToDetail}>
         <h3>
           {data?.location}
           <FiHeart size={20} />
@@ -41,14 +36,6 @@ const ListCard = ({ data, initialdata }) => {
         ,<h2>주방, 무선인터넷 , 난방, 헤어드라이어, 와이파이</h2>
         <div>
           <span className="grade">
-            {/* {data?.grade !== '0' && <IoIosStar size={25} />}
-            {data?.grade !== '0' && (
-              <span className="review"> {data?.grade}</span>
-            )}
-            {data?.grade !== '0' && (
-              <span className="reviewnum"> ({data?.gradeNum})</span>
-            )} */}
-
             {data?.grade !== '0' && (
               <>
                 <IoIosStar size={25} />
@@ -57,7 +44,7 @@ const ListCard = ({ data, initialdata }) => {
               </>
             )}
           </span>
-          <span className="price">￦ {data?.price}/월</span>
+          <span className="price">￦ {data?.price}/박</span>
         </div>
       </Cardtext>
     </CardBox>
