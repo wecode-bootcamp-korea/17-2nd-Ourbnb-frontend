@@ -46,9 +46,10 @@ const Box = styled.div`
     padding: 4px;
     color: rgb(251, 28, 74);
     font-size: 24px;
-    font-weight: 800;
+    font-weight: 1000;
     h3 {
       margin: 8px 0 0 5px;
+      font-weight: 1000;
     }
   }
   input {
@@ -73,13 +74,16 @@ const Navicon = styled.div`
   justify-content: space-between;
   padding: 5px;
   width: 250px;
+
   h1 {
     margin-top: 15px;
-    font-weight: 400;
+    font-weight: 800;
   }
+
   div {
     margin-top: 8px;
   }
+
   span {
     display: inline-block;
     width: auto;
@@ -88,6 +92,7 @@ const Navicon = styled.div`
     border: 1px solid rgb(217, 217, 217);
     border-radius: 30px;
     color: rgb(94, 94, 94);
+
     div {
       display: inline;
       margin-left: 8px;

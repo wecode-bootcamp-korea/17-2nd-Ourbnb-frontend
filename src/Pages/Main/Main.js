@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BiSearch } from 'react-icons/bi';
 import 'react-dates/initialize';
+import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 
@@ -52,16 +53,20 @@ const Main = () => {
           focusedInput={focusedInput}
           onFocusChange={focusedInput => setfocusedInput(focusedInput)}
           SelectedDateFormat="Long"
-          DisplayDateStart="03/03/21"
-          DisplayDateEnd="03/30/21"
+          startDatePlaceholderText={(date, 'Check In')}
+          endDatePlaceholderText={(date, 'Check Out')}
         />
         <h2>
           인원
-          <div>
-            <NumberBtn onClick={subtractPerson}>-</NumberBtn>
-            {person}
-            <NumberBtn onClick={addPerson}>+</NumberBtn>
-          </div>
+          <GuestsBtn person={person}>
+            <span>
+              <FiMinusCircle size={16} onClick={subtractPerson} />
+            </span>
+            <h4>{person}</h4>
+            <span>
+              <FiPlusCircle size={16} onClick={addPerson} />
+            </span>
+          </GuestsBtn>
         </h2>
 
         <div>
@@ -112,31 +117,38 @@ const ReserveBox = styled.div`
   justify-content: space-between;
   padding: 20px;
   top: 45px;
-  left: 25%;
+  left: 50%;
+  transform: translateX(-50%);
   width: 850px;
   height: 70px;
   margin: 0 auto;
   background-color: white;
   border-radius: 30px;
   border: 1px solid rgb(217, 217, 217);
+
   h3 {
     display: flex;
     flex-direction: column;
-    padding-bottom: 10px;
+    padding-left: 2px;
     font-weight: 800;
     p {
-      margin-bottom: 10px;
+      margin-left: 6px;
+      margin-bottom: 4px;
       font-weight: 800;
+      padding-left: 5px;
     }
     input {
       border: none;
+      margin-left: 9px;
     }
   }
   h2 {
     display: flex;
     flex-direction: column;
     text-align: center;
+    font-weight: 800;
     div {
+      margin-top: 6px;
       cursor: pointer;
     }
     input {
@@ -154,8 +166,21 @@ const ReserveBox = styled.div`
     color: white;
     background: rgb(251, 28, 74);
     border-radius: 30px;
+    &:hover {
+      background: rgb(218, 0, 71);
+    }
   }
 `;
-const NumberBtn = styled.span`
-  margin: 0 10px 0 10px;
+
+const GuestsBtn = styled.div.attrs(props => ({
+  person: props.person,
+}))`
+  display: flex;
+  justify-content: space-between;
+  width: 70px;
+  font-size: 17px;
+  margin-bottom: 170px;
+  h4 {
+    color: ${props => (props.person === 0 ? 'black' : 'rgb(251, 28, 74)')};
+  }
 `;

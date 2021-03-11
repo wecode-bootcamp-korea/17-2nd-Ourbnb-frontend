@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useHistory,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Main from './Pages/Main/Main';
 import Nav from './componenets/Nav/Nav';
 import Footer from './componenets/Footer/Footer';

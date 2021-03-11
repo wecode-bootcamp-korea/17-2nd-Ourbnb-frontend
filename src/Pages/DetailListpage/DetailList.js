@@ -3,7 +3,8 @@ import List from './List';
 import Map from '../Map/Map';
 import axios from 'axios';
 import styled from 'styled-components';
-import { URL } from '../../config';
+import { baseURL } from '../../config';
+// import { Url } from 'url';
 
 const DetailList = props => {
   const [isentire, setEnt] = useState(false);
@@ -16,77 +17,108 @@ const DetailList = props => {
   const [maxvalue, setMaxvalue] = useState('');
   const [istypeopen, settypeOpen] = useState(false);
   const [ispriceopen, setpriceopen] = useState(false);
+  const [pageindex, setPageindex] = useState('');
   const { state } = props.location;
 
-  const baseUrl = `checkin=${state.startDate}&checkout=${state.endDate}&guests=${state.person}&`;
-  const initialtypeurl = 'entire=&private=&hotel=&shared=&min=&max=';
+  const LIMIT = 15;
 
-  const searchType = () => {
-    let hot = ishotel.toString();
-    let ent = isentire.toString();
-    let pri = isprivate.toString();
-    let sha = isshared.toString();
+  const defaultUrl = `checkin=${state.startDate}&checkout=${state.endDate}&guests=${state.person}`;
 
-    const fetchdata = async () => {
-      const result = await axios(
-        `${URL}/accommodation?${baseUrl}entire=${hot}&private=${pri}&hotel=${ent}&shared=${sha}&min=${minvalue}&max=${maxvalue}`
-      );
-
-      const mapdata = result.data.data.map(data => {
-        return { lat: data.lat, long: data.long };
-      });
-
-      setroomData(result.data.data);
-      setmapData(mapdata);
-    };
-    fetchdata();
-    settypeOpen(false);
-    setpriceopen(false);
-  };
-
-  //서버 통신용
   useEffect(() => {
+    if (state.startDate === 'Invalid date') {
+      state.startDate = '';
+    }
+    if (state.endDate === 'Invalid date') {
+      state.endDate = '';
+    }
+    // const firstrender = `checkin=${state.startDate}&checkout=${state.endDate}&guests=${state.person}`;
     const fetchdata = async () => {
-      if (state.startDate === `Invalid date`) {
-        state.startDate = '';
-      }
-      if (state.endDate === `Invalid date`) {
-        state.endDate = '';
-      }
-
       try {
         const result = await axios(
-          `${URL}/accommodation?checkin=${state.startDate}&checkout=${state.endDate}&guests=${state.person}`
+          `${baseURL}/accommodation?checkin=${state.startDate}&checkout=${state.endDate}&guests=${state.person}`
         );
-        console.log(result);
+
         let mapdata = result.data.data.map(data => {
           return { lat: data.lat, long: data.long };
         });
         setroomData(result.data.data);
         setmapData(mapdata);
+
+        setPageindex(result.data.index);
       } catch (error) {
         console.log(error.message);
       }
     };
     fetchdata();
-  }, [state, state.endDate, state.person, state.startDate]);
+  }, []);
 
-  //목데이터
-  // useEffect(() => {
-  //   const fetchdata = async () => {
-  //     const result = await axios('/data/roomListdata.json');
+  let myUrl = new URL(`${baseURL}/accommodation?`);
+  let params = new URLSearchParams(myUrl.search.slice(1));
+  const typearr = [
+    { is: ishotel, key: 'hotel' },
+    { is: isentire, key: 'entire' },
+    { is: isshared, key: 'shared' },
+    { is: isprivate, key: 'private' },
+  ];
 
-  //     const mapdata = result.data.data.map(data => {
-  //       return { lat: data.lat, long: data.long };
-  //     });
+  typearr.map(type => {
+    if (type.is) {
+      params.append('roomtype', type.key);
+    } else {
+      params.delete(('roomtype', type.key));
+    }
+  });
 
-  //     setroomData(result.data.data);
-  //     setmapData(mapdata);
-  //   };
-  //   fetchdata();
-  // }, []);
+  if (minvalue) {
+    params.append('min', minvalue);
+  } else {
+    params.delete('min', minvalue);
+  }
+  if (maxvalue) {
+    params.append('max', maxvalue);
+  } else {
+    params.delete('max', maxvalue);
+  }
+  // window.location.search = myUrl;
+  const typeurl = params.toString();
+  const typeurland = `&${typeurl}`;
 
-  //console.log('디테일리스트>>>>', props);
+  const searchType = () => {
+    const fetchdata = async () => {
+      const result = await axios(
+        `${baseURL}/accommodation?${defaultUrl}${typeurland}`
+      );
+      const mapdata = result.data.data.map(data => {
+        return { lat: data.lat, long: data.long };
+      });
+      setroomData(result.data.data);
+      setmapData(mapdata);
+      setPageindex(result.data.index);
+    };
+    fetchdata();
+    settypeOpen(false);
+    setpriceopen(false);
+
+    //찾았다 내사랑
+    // let foo = `${defaultUrl}&${typeurl}`;
+    // window.location.search = `${defaultUrl}&${typeurl}`;
+    // console.log(window.location.search);
+  };
+
+  const fetchPage = async e => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const offset = e?.target.dataset.idx;
+
+    const result = await axios(
+      `${baseURL}/accommodation?${defaultUrl}${typeurland}&limit=${LIMIT}&offset=${
+        offset * LIMIT
+      }`
+    );
+
+    setroomData(result.data.data);
+    setmapData(mapdata);
+  };
+
   return (
     <Listcontainer>
       <List
@@ -111,7 +143,10 @@ const DetailList = props => {
         settypeOpen={settypeOpen}
         setpriceopen={setpriceopen}
         frontdata={state}
+        fetchPage={fetchPage}
+        pageindex={pageindex}
       />
+
       {mapdata && <Map mapdata={mapdata} />}
     </Listcontainer>
   );
@@ -121,4 +156,6 @@ export default DetailList;
 
 const Listcontainer = styled.div`
   display: flex;
+  position: relative;
+  margin-bottom: 50px;
 `;

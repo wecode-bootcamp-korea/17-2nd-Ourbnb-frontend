@@ -17,6 +17,7 @@ const Detailpage = props => {
   const location = useLocation();
 
   const initialstate = location.state.initialstate;
+
   console.log('이거슨 디테일상세>>', initialstate);
 
   const param = useParams();

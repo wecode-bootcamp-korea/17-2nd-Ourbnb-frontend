@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const TypelBox = props => {
@@ -115,10 +114,13 @@ const Typelist = styled.div`
     }
   }
   input {
-    height: 28px;
-    width: 28px;
+    height: 20px;
+    width: 20px;
     border-radius: 10%;
     border: 1px solid rgb(217, 217, 217);
+    &:hover {
+      border: 1px solid black;
+    }
   }
 `;
 const SaveBtn = styled.div`
@@ -135,35 +137,8 @@ const SaveBtn = styled.div`
     color: white;
     background: rgb(251, 28, 74);
     border-radius: 20px;
+    &:hover {
+      background: rgb(218, 0, 71);
+    }
   }
 `;
-
-const typeList = [
-  {
-    name: '집전체',
-    desc: '집전체를 단독으로 사용합니다',
-    value: 'entire',
-    id: 1,
-  },
-
-  {
-    name: '개인실',
-    desc:
-      '침실은 단독으로 쓰고, 이외의 공간은 호스트나 다른 게스트와 함께 이용할 수도 있습니다.',
-    value: 'private',
-    id: 2,
-  },
-  {
-    name: '호텔 객실',
-    desc: '부티크 호텔, 호스텔 등의 개인실이나 다인실을 이용합니다.',
-    value: 'hotel',
-    id: 3,
-  },
-  {
-    name: '다인실',
-    desc:
-      '사적 공간 없이, 침실이나 욕실 등을 호스트나 다른 게스트와 함께 이용합니다.',
-    value: 'shared',
-    id: 4,
-  },
-];

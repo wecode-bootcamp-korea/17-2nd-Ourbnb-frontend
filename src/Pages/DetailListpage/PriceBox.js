@@ -65,4 +65,7 @@ const Button = styled.button`
   border-radius: 30px;
   background-color: rgb(251, 28, 74);
   color: white;
+  &:hover {
+    background: rgb(218, 0, 71);
+  }
 `;
