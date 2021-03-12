@@ -31,7 +31,7 @@ class Payment extends Component {
         alert('결제완료 되었습니다. 감사합니다.');
       });
 
-    this.props.history.push('/mypage');
+    this.props.history.push('/');
   };
 
   render() {

@@ -104,8 +104,8 @@ export default List;
 
 const Listcontainer = styled.div`
   width: 50%;
-  height: auto;
-  /* overflow: scroll; */
+  height: 1000px;
+  overflow: auto;
 `;
 
 const Title = styled.h1`
