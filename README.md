@@ -1,5 +1,6 @@
 ## OurBnB
 
+![Our B B](https://user-images.githubusercontent.com/71913557/111892238-f6e7f680-8a3c-11eb-96c2-fb8c37443997.gif)
 
 
 ## 프로젝트 기간
