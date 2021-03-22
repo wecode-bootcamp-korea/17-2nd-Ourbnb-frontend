@@ -53,3 +53,21 @@ html, css, styled-componenet, scss, Javascript, CRA, React, react-hook
 - UI 컴포넌트 및 레이아웃 구현
 - 예약 정보 axios API 통신
 - Data Mapping을 통한 Menu Tap 구현
+
+
+## 김연주
+
+### Login 
+
+- 레이아웃을 모달창으로 구현
+- Kakao Developer 홈페이지를 참고하여 공개 API 표준 인증 방법 OAuth2.0 를 이용하여 인가코드로
+  토큰을 받아 다시 fetch로 backend와 API통신
+  
+
+### payment
+
+- 레이아웃 구현 후 결제창과 예약정보창 컴포넌트 분리
+- 디테일 페이지와 결제페이지를 react-router로 page 이동
+- location.state 사용하여 숙소, 총 금액, 인원을 을 props로 받아 결제창 UI에 구현
+- 결제정보(숙소,예약날짜,가격,인원)을 fetch 함수를 이용하여 API통신
+  
