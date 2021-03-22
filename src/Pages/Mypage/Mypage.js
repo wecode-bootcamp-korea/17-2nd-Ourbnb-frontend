@@ -12,6 +12,11 @@ const Mypage = props => {
   const [upcomming, setUpcomming] = useState([]);
   const [cancel, setCancel] = useState([]);
   const clickHandler = current => setCurrent(current);
+  // function clickHandler(current) {
+  //   return setCurrent(current);
+  // }
+  console.log('current', current);
+  console.log('idx', MANU.indexOf);
 
   useEffect(() => {
     const fetchMyData = async () => {
