@@ -22,7 +22,7 @@ html, css, styled-componenet, scss, Javascript, CRA, React, react-hook
 
 ### Main
 
-- daterangepicker를 통한 캘린더 구현
+- daterangepicker API 를 통한 캘린더 구현
 - 날짜, 인원수의 input value값을 querystring을 통해 axios API 통신
 
 ### DetailList Page
@@ -31,7 +31,7 @@ html, css, styled-componenet, scss, Javascript, CRA, React, react-hook
 - roomtype 체크박스 폼 및 pricerange input 폼 모달창 구현
 - filter조건에 따른 state 값을 배열에 담은 뒤 map을 통해 state 상태검사 및 params append, delete - 다중 필터구현(룸 타입을 추가하거나 가격을 조정할 경우 해당 조건에 따라 querystring이 추가되고 삭제되는 로직)
 - 조건에 따라 state 상태값을 변경, translateX 값을 변경하여 scroll 기능 구현
-- goole-map 활용, 위도와 경도를 서버에서 받아온 data로 부터 추출하여 새로운 state에 저장, maping 하여 fetch된 집들의 위치에 따라 map의 marker 전환 구현.
+- Goole-map API 활용, 위도와 경도를 서버에서 받아온 data로 부터 추출하여 새로운 state에 저장, maping 하여 fetch된 집들의 위치에 따라 map의 marker 전환 구현.
 - Pagenation 구현
 
 ## 허혜성
