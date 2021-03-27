@@ -4,7 +4,6 @@ import Map from '../Map/Map';
 import axios from 'axios';
 import styled from 'styled-components';
 import { baseURL } from '../../config';
-import { useHistory } from 'react-router-dom';
 
 const DetailList = props => {
   const [isentire, setEnt] = useState(false);
@@ -37,14 +36,14 @@ const DetailList = props => {
         const result = await axios(
           `${baseURL}/accommodation?checkin=${state.startDate}&checkout=${state.endDate}&guests=${state.person}`
         );
-
-        let mapdata = result.data.data.map(data => {
+        const { data, index } = result.data;
+        let mapdata = data.map(data => {
           return { lat: data.lat, long: data.long };
         });
-        setroomData(result.data.data);
+        setroomData(data);
         setmapData(mapdata);
 
-        setPageindex(result.data.index);
+        setPageindex(index);
       } catch (error) {
         console.log(error.message);
       }
@@ -88,12 +87,13 @@ const DetailList = props => {
       const result = await axios(
         `${baseURL}/accommodation?${defaultUrl}${typeurland}`
       );
-      const mapdata = result.data.data.map(data => {
+      const { data, index } = result.data;
+      const mapdata = data.map(data => {
         return { lat: data.lat, long: data.long };
       });
-      setroomData(result.data.data);
+      setroomData(data);
       setmapData(mapdata);
-      setPageindex(result.data.index);
+      setPageindex(index);
     };
     fetchdata();
     settypeOpen(false);
@@ -152,6 +152,5 @@ export default DetailList;
 const Listcontainer = styled.div`
   display: flex;
   position: relative;
-
   margin-bottom: 50px;
 `;
