@@ -19,7 +19,7 @@ class MapAPI extends Component {
   };
 
   showRooms = () => {
-    return this.props.mapdata.map((room, index) => {
+    return this.props.mapdata[0].mapdata.map((room, index) => {
       return (
         <Marker
           key={index}
@@ -52,26 +52,27 @@ class MapAPI extends Component {
   onEventChecker = (e, aug, geo) => {};
 
   render() {
+    const { mapdata } = this.props.mapdata[0];
     const mapStyles = {
       width: '833px',
       height: '1000px',
     };
 
     return (
-      <Map
-        google={this.props.google}
-        zoom={14}
-        style={mapStyles}
-        initialCenter={{
-          // lat: this.props.mapdata[0].lat,
-          // lng: this.props.mapdata[0].long,
-          lat: 37.50632661159643,
-          lng: 127.03090791778378,
-        }}
-        onClick={this.onEventChecker}
-      >
-        {this.showRooms()}
-      </Map>
+      mapdata && (
+        <Map
+          google={this.props.google}
+          zoom={13}
+          style={mapStyles}
+          initialCenter={{
+            lat: 37.50632661159643,
+            lng: 127.03090791778378,
+          }}
+          onClick={this.onEventChecker}
+        >
+          {this.showRooms()}
+        </Map>
+      )
     );
   }
 }
