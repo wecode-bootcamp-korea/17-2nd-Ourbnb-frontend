@@ -11,9 +11,7 @@ import { baseURL } from '../../config';
 
 const Detailpage = props => {
   const [list, setList] = useState([]);
-  const { state } = props.location;
   const location = useLocation();
-
   const initialstate = location.state.initialstate;
 
   useEffect(() => {

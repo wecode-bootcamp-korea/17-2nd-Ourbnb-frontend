@@ -6,26 +6,26 @@ const Footer = props => {
     <FooterBox>
       <Introduce>
         <div>소개</div>
-        {A.map(intro => (
-          <p>{intro}</p>
+        {A.map((intro, i) => (
+          <p key={i}>{intro}</p>
         ))}
       </Introduce>
       <Community>
         <div>커뮤니티</div>
-        {B.map(comuni => (
-          <p>{comuni}</p>
+        {B.map((comuni, i) => (
+          <p key={i}>{comuni}</p>
         ))}
       </Community>
       <Hosting>
         <div>호스팅하기</div>
-        {C.map(host => (
-          <p>{host}</p>
+        {C.map((host, i) => (
+          <p key={i}>{host}</p>
         ))}
       </Hosting>
       <Support>
         <div>지원하기</div>
-        {D.map(suppo => (
-          <p>{suppo}</p>
+        {D.map((suppo, i) => (
+          <p key={i}>{suppo}</p>
         ))}
       </Support>
     </FooterBox>
@@ -44,7 +44,6 @@ const FooterBox = styled.div`
 `;
 
 const Introduce = styled.div`
-  //background-color: olive;
   width: 1000px;
   height: 415px;
   margin: 0px 50px;

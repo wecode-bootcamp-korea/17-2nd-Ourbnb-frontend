@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { BiSearch } from 'react-icons/bi';
-import 'react-dates/initialize';
 import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi';
+import 'react-dates/initialize';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Main = () => {
   const [date, setDate] = useState({
@@ -16,15 +16,21 @@ const Main = () => {
   const [focusedInput, setfocusedInput] = useState(null);
   const [person, setPerson] = useState(0);
   const moment = require('moment');
-  const startday = moment(date.startdate).format('YYYY-MM-DD');
-  const endday = moment(date.enddate).format('YYYY-MM-DD');
+  let startday = moment(date.startdate).format('YYYY-MM-DD');
+  let endday = moment(date.enddate).format('YYYY-MM-DD');
+
+  if (startday === 'Invalid date') {
+    startday = '';
+  }
+  if (endday === 'Invalid date') {
+    endday = '';
+  }
 
   const subtractPerson = () => {
     if (person > 0) {
       setPerson(person - 1);
     }
   };
-
   const addPerson = () => {
     setPerson(person + 1);
   };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 import { SiAirbnb } from 'react-icons/si';
@@ -11,6 +11,7 @@ import Join from '../../Pages/Join/Join';
 const Nav = props => {
   const { isJoin, setIsJoin } = props;
   const history = useHistory();
+
   const goToMypage = () => {
     history.push('/mypage');
   };

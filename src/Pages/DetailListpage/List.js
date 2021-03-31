@@ -1,35 +1,29 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import ListCard from './ListCard';
 import TypeBox from './TypelBox';
 import PriceBox from './PriceBox';
+import { fetchPagedata } from '../../store/actions/index';
+import { useSelector, useDispatch } from 'react-redux';
+
+const LIMIT = 15;
 
 const List = props => {
-  const {
-    ishotel,
-    isentire,
-    isprivate,
-    isshared,
-    setHotel,
-    setEnt,
-    setSha,
-    setPri,
-    searchType,
-    minvalue,
-    setMinvalue,
-    setMaxvalue,
-    maxvalue,
-    searchPrice,
-    onchange,
-    istypeopen,
-    settypeOpen,
-    ispriceopen,
-    setpriceopen,
-  } = props;
-
   const startdayarr = props.checkdata.startDate.split('-');
   const enddayarr = props.checkdata.endDate.split('-');
+  const [typeurland, setType] = useState('');
+  const [istypeopen, settypeOpen] = useState(false);
+  const [ispriceopen, setpriceopen] = useState(false);
+  const { defaultUrl } = props;
   const { person } = props.checkdata;
-  const { fetchPage } = props;
+  const dispatch = useDispatch();
+  const { data, index } = useSelector(store => store.ListReducer[0]);
+
+  const fetchPage = e => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const offset = e.target.dataset.idx;
+    dispatch(fetchPagedata(offset, defaultUrl, typeurland, LIMIT));
+  };
 
   return (
     <Listcontainer>
@@ -41,59 +35,52 @@ const List = props => {
         일, {person !== 0 && `게스트 ${person} 명`}
       </CheckInfo>
       <Title>지도에서 선택한 지역의 숙소</Title>
+
       <Tag>
         <span onClick={() => settypeOpen(!istypeopen)}>숙소유형</span>
         <span onClick={() => setpriceopen(!ispriceopen)}>가격</span>
+
         {istypeopen && (
           <TypeBox
-            ishotel={ishotel}
-            isentire={isentire}
-            isprivate={isprivate}
-            isshared={isshared}
-            setHotel={setHotel}
-            setEnt={setEnt}
-            setSha={setSha}
-            setPri={setPri}
-            searchType={searchType}
-            onChange={onchange}
+            defaultUrl={defaultUrl}
+            settypeOpen={settypeOpen}
+            setType={setType}
           />
         )}
+
         {ispriceopen && (
           <PriceBox
-            minvalue={minvalue}
-            setMinvalue={setMinvalue}
-            maxvalue={maxvalue}
-            setMaxvalue={setMaxvalue}
-            searchPrice={searchPrice}
-            searchType={searchType}
+            defaultUrl={defaultUrl}
+            setpriceopen={setpriceopen}
+            setType={setType}
           />
         )}
       </Tag>
 
-      {props.roomdata.map(room => {
-        return (
-          <ListCard data={room} key={room.id} initialdata={props.frontdata} />
-        );
-      })}
+      {data &&
+        data.map(room => {
+          return (
+            <ListCard data={room} key={room.id} initialdata={props.frontdata} />
+          );
+        })}
 
       <PageNum>
-        <span data-idx={1} onClick={fetchPage}>
-          1
-        </span>
-        {props.pageindex > 1 && (
-          <span data-idx={2} onClick={fetchPage}>
-            2
-          </span>
-        )}
-        {props.pageindex > 2 && (
-          <span data-idx={3} onClick={fetchPage}>
-            3
-          </span>
-        )}
-        {props.pageindex > 3 && (
-          <span data-idx={4} onClick={fetchPage}>
-            4
-          </span>
+        {index && (
+          <>
+            {numBtn.map(btn => {
+              return (
+                index > btn.id && (
+                  <span
+                    key={btn.id}
+                    data-idx={btn.data_idx}
+                    onClick={e => fetchPage(e)}
+                  >
+                    {btn.data_idx}
+                  </span>
+                )
+              );
+            })}
+          </>
         )}
       </PageNum>
     </Listcontainer>
@@ -101,6 +88,25 @@ const List = props => {
 };
 
 export default List;
+
+const numBtn = [
+  {
+    id: 0,
+    data_idx: 1,
+  },
+  {
+    id: 1,
+    data_idx: 2,
+  },
+  {
+    id: 2,
+    data_idx: 3,
+  },
+  {
+    id: 3,
+    data_idx: 4,
+  },
+];
 
 const Listcontainer = styled.div`
   width: 50%;

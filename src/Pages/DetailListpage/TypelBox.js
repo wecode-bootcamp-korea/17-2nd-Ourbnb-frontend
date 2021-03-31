@@ -1,77 +1,71 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { TypePriceFilterd } from '../../store/actions/index';
+import { baseURL } from '../../config';
 
-const TypelBox = props => {
-  const {
-    ishotel,
-    isentire,
-    isprivate,
-    isshared,
-    setHotel,
-    setEnt,
-    setSha,
-    setPri,
-    searchType,
-  } = props;
+const TypelBox = ({ defaultUrl, settypeOpen, setType }) => {
+  const [types, setTypes] = useState({
+    isentire: false,
+    isshared: false,
+    isprivate: false,
+    ishotel: false,
+  });
+
+  const { isentire, isshared, isprivate, ishotel } = types;
+  const dispatch = useDispatch();
+
+  let myUrl = new URL(`${baseURL}/accommodation?`);
+  let params = new URLSearchParams(myUrl.search.slice(1));
+  const typearr = [
+    { is: ishotel, key: 'hotel' },
+    { is: isentire, key: 'entire' },
+    { is: isshared, key: 'shared' },
+    { is: isprivate, key: 'private' },
+  ];
+
+  typearr.forEach(type => {
+    if (type.is) {
+      params.append('roomtype', type.key);
+    } else {
+      params.delete(('roomtype', type.key));
+    }
+  });
+  let typeurl = params.toString();
+  let typeurland = `&${typeurl}`;
+
+  const onchange = e => {
+    const { checked, name } = e.target;
+    setTypes({
+      ...types,
+      [name]: checked,
+    });
+  };
+
+  const searchType = () => {
+    settypeOpen(false);
+    setType(typeurland);
+    dispatch(TypePriceFilterd(typeurland, defaultUrl));
+  };
 
   return (
     <div>
       <Cotainer>
         <List>
-          <Typelist>
-            <input
-              type="checkbox"
-              name="entireplace"
-              checked={isentire}
-              onChange={() => setEnt(!isentire)}
-              value="entire"
-            />
-            <div>
-              <h1>집전체</h1>
-              <h2>집전체를 단독으로 사용합니다</h2>
-            </div>
-          </Typelist>
-          <Typelist>
-            <input
-              type="checkbox"
-              name="entireplace"
-              checked={isprivate}
-              onChange={() => setPri(!isprivate)}
-              value="shared"
-            />
-            <div>
-              <h1>개인실</h1>
-              <h2>집전체를 단독으로 사용합니다</h2>
-            </div>
-          </Typelist>
-          <Typelist>
-            <input
-              type="checkbox"
-              name="entireplace"
-              checked={isshared}
-              onChange={() => setSha(!isshared)}
-              value="shared"
-            />
-            <div>
-              <h1>다인실</h1>
-              <h2>집전체를 단독으로 사용합니다</h2>
-            </div>
-          </Typelist>
-          <Typelist>
-            <input
-              type="checkbox"
-              name="entireplace"
-              checked={ishotel}
-              onChange={() => setHotel(!ishotel)}
-              value="shared"
-            />
-            <div>
-              <h1>호텔</h1>
-              <h2>집전체를 단독으로 사용합니다</h2>
-            </div>
-          </Typelist>
+          {typelist.map((list, inx) => {
+            return (
+              <Typelist key={inx}>
+                <input type="checkbox" name={list.name} onChange={onchange} />
+                <div>
+                  <h1>{list.type}</h1>
+                  <h2>{list.desc}</h2>
+                </div>
+              </Typelist>
+            );
+          })}
         </List>
         <SaveBtn>
-          <button onClick={searchType}>save</button>
+          <button onClick={() => searchType()}>save</button>
         </SaveBtn>
       </Cotainer>
     </div>
@@ -79,6 +73,31 @@ const TypelBox = props => {
 };
 
 export default TypelBox;
+
+const typelist = [
+  {
+    name: 'isentire',
+    type: '집전체',
+    desc: '집 전체를 단독으로 사용합니다.',
+  },
+  {
+    name: 'isprivate',
+    type: '개인실',
+    desc:
+      '침실은 단독으로 쓰고, 이외의 공간은 호스트나 다른 게스트와 함께 이용할 수도 있습니다.',
+  },
+  {
+    name: 'isshared',
+    type: '다인실',
+    desc: '부티크 호텔, 호스텔 등의 개인실이나 다인실을 이용합니다.',
+  },
+  {
+    name: 'ishotel',
+    type: '호텔',
+    desc:
+      '사적 공간 없이, 침실이나 욕실 등을 호스트나 다른 게스트와 함께 이용합니다.',
+  },
+];
 
 const Cotainer = styled.div`
   position: absolute;
