@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 import { SiAirbnb } from 'react-icons/si';
 import { BsList } from 'react-icons/bs';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { RiLoginBoxLine } from 'react-icons/ri';
-
 import Join from '../../Pages/Join/Join';
 
 const Nav = props => {
+  // const { isJoin, setIsJoin } = useState(false);
   const { isJoin, setIsJoin } = props;
   const history = useHistory();
 
@@ -19,6 +19,9 @@ const Nav = props => {
   const menuClick = () => {
     setIsJoin(!isJoin);
   };
+
+  console.log(setIsJoin, '안녕');
+  console.log(isJoin, '하이');
 
   return (
     <Box>
@@ -38,7 +41,7 @@ const Nav = props => {
           <div>
             <FaRegUserCircle size={28} onClick={goToMypage} />
           </div>
-          {isJoin && <Join setIsJoin={setIsJoin} />}
+          {isJoin && <Join isJoin={isJoin} setIsJoin={setIsJoin} />}
         </span>
       </Navicon>
     </Box>
