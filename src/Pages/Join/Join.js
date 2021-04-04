@@ -5,7 +5,7 @@ import { kakaoapi } from '../../config';
 const Join = props => {
   const { setIsJoin } = props;
 
-  const kakaoLogin = props => {
+  const kakaoLogin = () => {
     const { Kakao } = window;
     Kakao.Auth.login({
       success: function (response) {

@@ -10,21 +10,14 @@ import Payment from './Pages/Payment/Payment';
 import Mypage from './Pages/Mypage/Mypage';
 
 const Routes = () => {
-  const [isJoin, setIsJoin] = useState(false);
   return (
     <Router>
-      <Nav isJoin={isJoin} setIsJoin={setIsJoin} />
+      <Nav />
       <Switch>
         <Route exact path="/" component={Main} />
         <Route exact path="/detaillist" component={DetailList} />
         <Route exact path="/detail/:id" component={Detailpage} />
-        <Route
-          exact
-          path="/"
-          isJoin={isJoin}
-          setIsJoin={setIsJoin}
-          component={Join}
-        />
+        <Route exact path="/" component={Join} />
         <Route exact path="/Payment" component={Payment} />
         <Route exact path="/mypage" component={Mypage} />
       </Switch>

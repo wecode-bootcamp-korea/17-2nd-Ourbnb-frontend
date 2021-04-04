@@ -38,7 +38,7 @@ const Nav = props => {
           <div>
             <FaRegUserCircle size={28} onClick={goToMypage} />
           </div>
-          {isJoin && <Join isJoin={isJoin} setIsJoin={setIsJoin} />}
+          {isJoin && <Join setIsJoin={setIsJoin} />}
         </span>
       </Navicon>
     </Box>
