@@ -8,8 +8,8 @@ import { RiLoginBoxLine } from 'react-icons/ri';
 import Join from '../../Pages/Join/Join';
 
 const Nav = () => {
+  // class 컴포넌트에서 STATE 정의
   const [isJoin, setIsJoin] = useState(false);
-  // const { isJoin, setIsJoin } = props;
   const history = useHistory();
 
   const goToMypage = () => {
@@ -18,10 +18,7 @@ const Nav = () => {
 
   const menuClick = () => {
     setIsJoin(!isJoin);
-    // console.log('안녕');
   };
-
-  // console.log(isJoin, '하이');
 
   return (
     <Box>

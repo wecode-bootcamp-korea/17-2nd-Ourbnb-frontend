@@ -1,8 +1,7 @@
 import './Join.scss';
 import React from 'react';
 import { kakaoapi } from '../../config';
-import JoinModal from './JoinModal';
-import { render } from 'react-dom/cjs/react-dom.development';
+// import { render } from 'react-dom/cjs/react-dom.development';
 // import { render } from '@testing-library/react';
 
 const Join = props => {

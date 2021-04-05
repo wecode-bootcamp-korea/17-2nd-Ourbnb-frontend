@@ -8,16 +8,17 @@ class JoinModal extends Component {
 
   handlePropsData = () => {
     const { isLogin } = this.state;
-    this.setState({ isLogin: !isLogin });
+    this.setState({ isLogin: isLogin ? signInProps : JoinProps });
+    console.log('ㅎㅇ');
   };
+
   render() {
-    const { isLogin } = this.state;
-    console.log('하이');
+    // const { isLogin } = this.state;
     return (
       <div className="Modal">
         <Join
           handlePropsData={this.handlePropsData}
-          fomet={isLogin ? signInProps : JoinProps}
+          // fomet={isLogin ? signInProps : JoinProps}
         />
       </div>
     );

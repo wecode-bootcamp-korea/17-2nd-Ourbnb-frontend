@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import './Payment.scss';
 import Reservation from './components/Reservation';
 import PaymentList from './components/PaymentList';
 import { baseURL } from '../../config';
 
-class Payment extends Component {
-  cardPayment = () => {
+const Payment = props => {
+  const cardPayment = () => {
     const {
       accommodation_id,
       totalPrices,
       initialstate,
-    } = this.props.location.state;
+    } = props.location.state;
 
     fetch(`${baseURL}/reservation/purchase`, {
       method: 'POST',
@@ -31,63 +31,57 @@ class Payment extends Component {
         alert('결제완료 되었습니다. 감사합니다.');
       });
 
-    this.props.history.push('/');
+    props.history.push('/');
   };
 
-  render() {
-    return (
-      <div className="payment">
-        <header className="reservation"> 〈 확인 및 결제</header>
-        <div className="information">
-          <div className="reservationContainer">
-            <Reservation payInfo={this.props.location.state} />
-            <article className="paymentComponents">
-              <header className="paymentHeader">
-                결제수단
-                <div className="cardImg">
-                  <img
-                    alt="IMG"
-                    src="https://a0.muscache.com/airbnb/static/packages/logo_visa.0adea522.svg"
-                    className="amex"
-                  />
-                  <img
-                    alt="IMG"
-                    src="https://a0.muscache.com/airbnb/static/packages/logo_amex.84088b52.svg"
-                    className="visa"
-                  />
-                  <img
-                    alt="IMG"
-                    src="https://a0.muscache.com/airbnb/static/packages/logo_mastercard.f18379cf.svg"
-                    className="master"
-                  />
-                </div>
-              </header>
-              <div className="creditPayment">
-                <input className="cardNum" placeholder="카드 번호"></input>
-                <input className="cardOver" placeholder="만료일"></input>
-                <input className="cardCVV" placeholder="CVV"></input>
-                <input className="post" placeholder="우편번호"></input>
+  return (
+    <div className="payment">
+      <header className="reservation"> 〈 확인 및 결제</header>
+      <div className="information">
+        <div className="reservationContainer">
+          <Reservation payInfo={props.location.state} />
+          <article className="paymentComponents">
+            <header className="paymentHeader">
+              결제수단
+              <div className="cardImg">
+                <img
+                  alt="IMG"
+                  src="https://a0.muscache.com/airbnb/static/packages/logo_visa.0adea522.svg"
+                  className="amex"
+                />
+                <img
+                  alt="IMG"
+                  src="https://a0.muscache.com/airbnb/static/packages/logo_amex.84088b52.svg"
+                  className="visa"
+                />
+                <img
+                  alt="IMG"
+                  src="https://a0.muscache.com/airbnb/static/packages/logo_mastercard.f18379cf.svg"
+                  className="master"
+                />
               </div>
-            </article>
-          </div>
-          <div className="paymentContainer">
-            <PaymentList price={this.props.location.state} />
-            <div className="kakaopay">
-              <img
-                src="/images/kakao.jpg"
-                className="kakaoImg"
-                alt="kakao"
-              ></img>
-              <button className="requireReservation" onClick={this.cardPayment}>
-                카카오 결제하기
-              </button>
+            </header>
+            <div className="creditPayment">
+              <input className="cardNum" placeholder="카드 번호"></input>
+              <input className="cardOver" placeholder="만료일"></input>
+              <input className="cardCVV" placeholder="CVV"></input>
+              <input className="post" placeholder="우편번호"></input>
             </div>
+          </article>
+        </div>
+        <div className="paymentContainer">
+          <PaymentList price={props.location.state} />
+          <div className="kakaopay">
+            <img src="/images/kakao.jpg" className="kakaoImg" alt="kakao"></img>
+            <button className="requireReservation" onClick={cardPayment}>
+              카카오 결제하기
+            </button>
           </div>
         </div>
-        <div className="paymentDetail"></div>
       </div>
-    );
-  }
-}
+      <div className="paymentDetail"></div>
+    </div>
+  );
+};
 
 export default withRouter(Payment);
