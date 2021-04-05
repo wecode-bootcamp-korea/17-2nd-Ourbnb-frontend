@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Main from './Pages/Main/Main';
 import Nav from './componenets/Nav/Nav';
@@ -10,10 +9,10 @@ import Payment from './Pages/Payment/Payment';
 import Mypage from './Pages/Mypage/Mypage';
 
 const Routes = () => {
-  const [isJoin, setIsJoin] = useState(false);
+  // const [isJoin, setIsJoin] = useState(false);
   return (
     <Router>
-      <Nav isJoin={isJoin} setIsJoin={setIsJoin} />
+      <Nav />
       <Switch>
         <Route exact path="/" component={Main} />
         <Route exact path="/detaillist" component={DetailList} />
